@@ -8,9 +8,9 @@ You can use TypeScript to inherit from native classes.
 // A native class with the name "JSObject" will be registered, so it should be unique
 class JSObject extends NSObject {
     public encodeWithCoder(aCoder) { /* ... */ }
-    
+
     public initWithCoder(aDecoder) { /* ... */ }
-    
+
     public 'selectorWithX:andY:'(x, y) { /* ... */ }
 
     // An array of protocols to be implemented by the native class

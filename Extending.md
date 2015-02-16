@@ -1,6 +1,6 @@
 # Inheriting Native Types in JavaScript
 
-The basic syntax for doing this is 
+The basic syntax for doing this is
 
 ```js
 var constructorFunction = <TypeName>.extend({<Overrides and Exposed-to-native Methods Object>},[optional]{Native Mappings Object});
