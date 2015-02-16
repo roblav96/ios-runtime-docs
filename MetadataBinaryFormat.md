@@ -8,7 +8,7 @@
 
 In the binary file the global table is at the beginning of the file and the heap is located after it.
 
-![Metadata File Structure](https://github.com/NativeScript/ios-docs/raw/master/images/FileStructure.jpg)
+![Metadata File Structure](images/FileStructure.jpg)
 
 # Heap
 
@@ -18,13 +18,13 @@ The heap is the place where all the meaningful information is stored in arbitrar
 
 The global table is an array of offsets (with count at the beginning) serving as hash table of MOs (metadata objects). Every offset in the GT points to an array of offsets (with count at the beginning) each of which is pointing to metadata object. The hash of a metadata object is equal to the hash of its JS name. To find metadata object by given JS name, the hash of the name is calculated (with the default StringHasher built in JavaScriptCore) then it is modulo divided by the size of the GT and the result is the index in the GT where the metadata object resides. The array of metadata objects at the given index in the GT should be iterated and the JS name must be compared to the JS name of each metadata object in the list to find the searched object.
 
-![Global Table](https://github.com/NativeScript/ios-docs/raw/master/images/GT.jpg)
+![Global Table](images/GT.jpg)
 
 # Metadata Object
 
 A **metadata object** (MO) is a structure (minimum of 6 bytes in length) holding the information for a single symbol.
 
-![Metadata Object](https://github.com/NativeScript/ios-docs/raw/master/images/MO.jpg)
+![Metadata Object](images/MO.jpg)
 
 ## Names offset
 
@@ -34,7 +34,7 @@ Every symbol **has JavaScript name** and **real name** . The JS name is the uniq
 
 The Flags section is holding 8 flags (not all of them are used).
 
-![Flags](https://github.com/NativeScript/ios-docs/raw/master/images/Flags.jpg)
+![Flags](images/Flags.jpg)
 
 
 Flags 0, 1 and 2 are used to encode a number (from 0 to 7) representing the type of metadata object (0 – Unknown (not used), 1 – Structure, 2 – Union, 3 – Function, 4 – Enumeration, 5 – Global variable, 6 – Interface, 7 - Protocol). The only exceptions are methods and properties. They are stored in different arrays and they are accessible only through their owner (interface or protocol), so there is no need for them to store its type. In properties and methods flags 0, 1 and 2 have different meaning (see _Metadata Objects Specific Information_ section).
@@ -55,7 +55,7 @@ Every metadata object has specific, custom encoded data depending on its type.
 
 ## Records (Structures and Unions)
 
-![Record Info Section](https://github.com/NativeScript/ios-docs/raw/master/images/Record%20Info%20Section.jpg)
+![Record Info Section](images/Record%20Info%20Section.jpg)
 
 
 The **Info section** contains an offset to the fields encoding (which is a string), fields count and for every field – an offset pointing to the name of the field in the same order they appear in the record declaration.
@@ -78,7 +78,7 @@ The **Info section** contains a single offset pointing to a string which value i
 
 An **interface metadata object** contains information about all of its **own** members and all of the **own** members of its **own** categories. It stores the names of base interface and implemented protocols, but **do not** store information about its members.
 
- ![Interfaces](https://github.com/NativeScript/ios-docs/raw/master/images/Interface.jpg)
+ ![Interfaces](images/Interface.jpg)
 
 The **Info section** contains
 
@@ -105,7 +105,7 @@ Flag 1 is true only if the current member is **hiding** other members (when the 
 
 A **method metadata object** inherits all characteristics of **member metadata object** and adds some more specific. For methods flag 4 is true if the method is **variadic** and flag 2 – if the method is variadic and expects **null terminated** list of parameters.
 
-  ![Methods](https://github.com/NativeScript/ios-docs/raw/master/images/Method.jpg)
+  ![Methods](images/Method.jpg)
 
 The **Info section** contains 3 offsets – the first is pointing to a string which value is the **selector** of the method, the second is pointing to the method encoding (a string produced by the concatenation of the return type encoding and all parameters type encodings) and the third is pointing to the compiler encoding of the method.
 
