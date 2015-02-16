@@ -38,4 +38,4 @@ TNSSwizzleKlass.staticMethod = function (x) {
 };
 ```
 
-Use method swizzling as a last resort.
+Use method swizzling as a [last resort](http://nshipster.com/method-swizzling/#considerations).
