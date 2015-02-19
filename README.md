@@ -15,4 +15,5 @@ The repository contains the raw content files. To see the HTML representation of
 	* [Hello World Application](./getting-started/hello-world.md)
 * iOS Types
   * [Objective-C Classes](./types/ObjC-Classes.md)
+  * [Objective-C Categories](./types/ObjC-Categories.md)
   * [Enums](./types/Enums.md)
