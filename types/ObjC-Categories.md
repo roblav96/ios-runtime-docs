@@ -28,4 +28,4 @@ console.log(url); // "foo/bar -- file:///"
 console.log(url.pathComponents); // ["/", "foo", "bar"]
 ```
 
-Objective-C categories can implement Objective-C protocols and their methods and properties will be also exposed.
+Objective-C categories can implement [Objective-C protocols](ObjC-Protocols.md) and their methods and properties will be also exposed.
