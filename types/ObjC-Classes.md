@@ -5,7 +5,7 @@ description: "Describes how Objective-C classes are exposed."
 position: 0
 ---
 
-# Objective-C Classes
+# Objective-C classes
 Objective-C classes are exposed as JavaScript classes. Each Objective-C class is presented by a pair of corresponding JavaScript constructor function and a prototype object.
 
 The methods declared in the Objective-C classes are exposed:
@@ -14,7 +14,7 @@ The methods declared in the Objective-C classes are exposed:
 
 For Objective-C properties, JavaScript property descriptors are declared on the prototype object.
 
-## Prototype Chain
+## Prototype chain
 The prototype chain of the JavaScript objects matches the inheritance chain of the represented Objective-C classes. For example:
 
 ```objective-c
@@ -61,7 +61,7 @@ DerivedClass.prototype.derivedInstanceMethod = function () { /* native call */ }
 
 ### JavaScript `instanceof` opereator
 You can use the JavaScript [`instanceof` operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof) to see if an object inherits from a given class:
-```
+```javascript
 var object = DerivedClass.alloc().init();
 console.log(object instanceof DerivedClass); // true
 console.log(object instanceof BaseClass); // true
@@ -69,7 +69,7 @@ console.log(object instanceof NSObject); // true
 console.log(object instanceof Object); // true
 ```
 
-## Instantiating Objects
+## Instantiating objects
 
 ### `alloc`, `init` or `new`
 Objective-C instances are created using:
@@ -112,7 +112,7 @@ var instance = UIAlertView.alloc().init();
 instance.dismissWithClickedButtonIndexAnimated(0, true);
 ```
 
-### Static Methods
+### Static methods
 Static methods are exposed in JavaScript as functions that call the underlying native methods. They are defined as properties on the constructor function. Since the constructor functions of derived classes have for prototype their base class constructor function, static methods are inherited.
 
 For example:
@@ -136,7 +136,7 @@ DerivedClass.derivedStaticMethod();
 
 If `DerivedClass` overrides `baseStaticMethod` the correct override will be called, even if it is not declared in the header.
 
-### Instance Methods
+### Instance methods
 Instance methods are exposed in JavaScript as functions that call the underlying native methods. They are defined as properties on the prototype object. Since the prototype objects of derived classes have for prototype their base class' prototype, instance methods are inherited.
 
 For example:
