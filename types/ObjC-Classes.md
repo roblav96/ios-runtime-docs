@@ -103,17 +103,13 @@ When Objective-C methods are exposed in JavaScript, we remove the colons from th
 For example:
 ```objective-c
 @interface UIAlertView : UIView
-- (instancetype)initWithTitle:(NSString *)title
-                      message:(NSString *)message
-                     delegate:(id)delegate
-            cancelButtonTitle:(NSString *)cancelButtonTitle
-            otherButtonTitles:(NSString *)otherButtonTitles
-                             ,... NS_REQUIRES_NIL_TERMINATION;
+- (void)dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated;
 @end
 ```
 Will form the following JavaScript instance method:
 ```javascript
-UIAlertView.alloc().initWithTitleMessageDelegateCancelButtonTitleOtherButtonTitles("Title", "Message", null, "OK", null);
+var instance = UIAlertView.alloc().init();
+instance.dismissWithClickedButtonIndexAnimated(0, true);
 ```
 
 ### Static Methods

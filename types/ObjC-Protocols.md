@@ -5,7 +5,7 @@ description: "Describes how Objective-C protocols are exposed."
 position: 0
 ---
 
-#Objective-C Protocols
+# Objective-C Protocols
 Objective-C protocols describe an API Objective-C classes may implement. JavaScript does not have a matching counterpart. For every Objective-C Protocol we expose a JavaScript object that identifies the protocol.
 
 For example given the following Objective-C declarations:
