@@ -16,4 +16,5 @@ The repository contains the raw content files. To see the HTML representation of
 * iOS Types
   * [Objective-C Classes](./types/ObjC-Classes.md)
   * [Objective-C Categories](./types/ObjC-Categories.md)
+  * [Objective-C Protocols](./types/ObjC-Protocols.md)
   * [Enums](./types/Enums.md)

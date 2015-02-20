@@ -1,7 +1,7 @@
 ---
-nav-title: "Objective-C Interfaces"
-title: "Objective-C Interfaces"
-description: "Describes how Objective-C Interfaces are exposed."
+nav-title: "Objective-C Classes"
+title: "Objective-C Classes"
+description: "Describes how Objective-C classes are exposed."
 position: 0
 ---
 
@@ -9,6 +9,7 @@ position: 0
 The Objective-C classes are exposed as JavaScript classes. Each Objective-C class is presented by a pair of corresponding JavaScript constructor function and a prototype object. The methods declared in the Objective-C classes are exposed:
  - If static - on the JavaScript constructor function
  - If instance - on the JavaScript prototype object
+
 For Objective-C properties, JavaScript properties are declared on the prototype object.
 
 ## Prototype Chain

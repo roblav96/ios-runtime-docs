@@ -24,7 +24,7 @@ They will be exposed as static or instance methods and properties on the JavaScr
 You can use them from JavaScript:
 ``` JavaScript
 var foo = NSString.stringWithString("foo");
-var fooBar = nsString.stringByAppendingPathComponent("bar");
+var fooBar = foo.stringByAppendingPathComponent("bar");
 var foo = foo.pathComponents;
 ```
 
