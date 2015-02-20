@@ -162,7 +162,7 @@ You can use TypeScript to inherit from native classes.
 
 ```typescript
 // A native class with the name "JSObject" will be registered, so it should be unique
-class JSObject extends NSObject {
+class JSObject extends NSObject implements NSCoding {
     public encodeWithCoder(aCoder) { /* ... */ }
 
     public initWithCoder(aDecoder) { /* ... */ }
@@ -170,11 +170,11 @@ class JSObject extends NSObject {
     public "selectorWithX:andY:"(x, y) { /* ... */ }
 
     // An array of protocols to be implemented by the native class
-    public static ObjCProtocols = [NSCoding];
+    public static ObjCProtocols = [ NSCoding ];
 
     // A selector will be exposed so it can be called from native.
     public static ObjCExposedMethods = {
-        "selectorWithX:andY:": { returns: interop.types.void, params: [interop.types.id, interop.types.id] }
+        "selectorWithX:andY:": { returns: interop.types.void, params: [ interop.types.id, interop.types.id ] }
     };
 }
 ```
