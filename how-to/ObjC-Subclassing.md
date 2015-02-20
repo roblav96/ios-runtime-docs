@@ -12,7 +12,7 @@ For [Objective-C classes](../types/ObjC-Classes.md) we have JavaScript construct
 The constructor functions have a static method called **`extend`** used to declare Objective-C subclasses from JavaScript.
 
 ### Implementing protocols
-To implement a protocol use the **`extend`** method on an Objective-C class, the implemented protocols are provided in the extend arguments.
+To implement a protocol use the **`extend`** method on an Objective-C class, the implemented protocols are provided in the `extend` arguments.
 
 ## Extend
 The **`extend`** method has the following usage:
@@ -21,7 +21,7 @@ The **`extend`** method has the following usage:
 
 #### classMembers
 The properties of the `classMembers` argument define the instance class members:
- * *methods* - define or override class methods
+ * *methods* - define or override instance class methods
  * *properties* - define or override class properties
 
 There are three type of methods, which can be contained in this object - base class overrides, native visible methods and pure JavaScript methods. The difference between native visible and pure Javascript methods is the that later are only accessible in your JavaScript code. Should you want the method to be visible and callable from the native libraries, you should provide a second parameter to `extend`. This parameter should provide the needed additional metadata about the method signature.
@@ -115,7 +115,7 @@ var MyAppDelegate = UIResponder.extend({
 You can implement only some methods of the protocol. If a not implemented method is called an exception will be raised at runtime. You can implement only some or none of the optional methods.
 
 ### Exposed method example
-The following example shows how you can create a new method accessible from Objective-C APIs, that is declared in JavaScript:
+The following example shows how you can create a new instance method accessible from Objective-C APIs, that is declared in JavaScript:
 ```javascript
 var MyViewController = UIViewController.extend({
     viewDidLoad: function () {
@@ -181,4 +181,9 @@ class JSObject extends NSObject {
 
 There should be no TypeScript constructor, because it will not be executed. Instead override one of the `init` methods.
 
-You shouldn't extend an already extended class.
+
+## Limitations
+
+* You shouldn't extend an already extended class
+* You can't override static methods
+* You can't expose static methods or properties
