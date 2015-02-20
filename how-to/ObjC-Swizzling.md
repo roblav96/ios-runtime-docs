@@ -1,3 +1,10 @@
+---
+nav-title: "Objective-C Swizzling"
+title: "Objective-C Swizzling"
+description: "How to swizzle Objective-C methods."
+position: 0
+---
+
 # Objective-C Swizzling
 
 You can swizzle a static method, instance method or a property of a native class.

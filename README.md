@@ -19,4 +19,5 @@ The repository contains the raw content files. To see the HTML representation of
   * [Objective-C Protocols](./types/ObjC-Protocols.md)
   * [Enums](./types/Enums.md)
 * How-to
-  * [Subclassing Objective-C classes](./how-to/ObjC-Subclassing.md)
+  * [Subclassing Objective-C Classes](./how-to/ObjC-Subclassing.md)
+  * [Objective-C Swizzling](./how-to/ObjC-Swizzling.md)
