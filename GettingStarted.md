@@ -241,30 +241,6 @@ instance.method1();
 Here our class inherits a single class and implements two protocols.
 
 
-## Splitting your application in multiple modules
-Once you learn the basics of NativeScript you would probably want to write a larger app than a simple hello-world-like app. To be more productive you would probably want to structure your app into modules. NativeScript implements the [CommonJS modules](http://wiki.commonjs.org/wiki/Modules/1.1).
-
-In most applications your folder structure should look something like:
-
-    |- app/
-    |--- bootstrap.js
-    |--- module/
-    |----- index.js
-    |----- module_utils.js
-    |- tns_modules/
-    |--- camera/
-    |----- index.js
-
-The main starting point of your app is `bootstrap.js`. The `app` folder is where your application files are. The `tns_modules` is the folder where NativeScript Code Modules are. You can require additional files using `require("modulePath")`. The resolve algorithm is as follows:
-* Checks for `app/modulePath`
-* Checks for `app/modulePath/index.js`
-* Checks for `tns_modules/modulePath`
-* Checks for `tns_modules/modulePath/index.js` and loads it if exists
-* Otherwise it fails
-
-When requesting a module several times the result is cached. Circular references are not recommended, but supported.
-Additionally you have the `global`, `module` and `exports` variables.
-
 ## Using the C API
 
 The C language is fairly simple. In general you have **functions, structs/unions, enumerations and constants**. Pointers and function pointers have a separate section and will be explained later. We will remind you how to use them in C and how the same code translates to NativeScript:

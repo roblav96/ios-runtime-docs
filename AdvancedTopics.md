@@ -74,30 +74,6 @@ try {
 }
 ```
 
-## Calling variadic methods and functions
-NativeScript supports variadic methods as well. The call of variadic method is as a normal method except for the fact that **all variadic parameters are passed as an array** as the last argument. This special array contains an object for each variadic parameter in the format: `{ type: ..., value: ... }`.
-
-The syntax may be a bit verbose, but the `type` metadata is required to ensure correct marshalling at runtime. All possible values are: `PrimitiveType.INT`, `PrimitiveType.UNSIGNED_INT`, `PrimitiveType.DOUBLE`, `PrimitiveType.POINTER`.
-
-Lets see how we can call a **variadic C function** as `NSLog`:
-```javascript
-Foundation.NSLog("String: %@, Int: %d Double: %f UInt: %d", [
-    { type: PrimitiveType.POINTER, value: "NativeScript" },
-    { type: PrimitiveType.INT, value: 17 },
-    { type: PrimitiveType.DOUBLE, value: 3.4 },
-    { type: PrimitiveType.UNSIGNED_INT, value: 100 }
-]);
-```
-
-Calling **variadic Objective-C methods** is slightly different. You should append `WithArguments` suffix at the end of the method. For example:
-```javascript
-var myArray = Foundation.NSArray.initWithObjectsWithArguments("John", [
-    { type: PrimitiveType.POINTER, value: "David" },
-    { type: PrimitiveType.POINTER, value: "Smith" },
-    { type: PrimitiveType.POINTER, value: undefined }
-]);
-```
-
 ## Checking if new iOS features are available
 Newer versions of iOS contain some new classes, functions or constants. You can check if certain new members are available at runtime by using for example:
 
