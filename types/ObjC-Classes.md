@@ -177,7 +177,7 @@ Objective-C properties are exposed as JavaScript property descriptors. For examp
 The prototype for the `UIAlertView` class will have a property `title` that when get or assigned on JavaScript instances of `UIAlertView` will call the native Objective-C getter and setter methods:
 
 ```javascript
-Object.defineProperty(UIAlertView.prototype, 'title', {
+Object.defineProperty(UIAlertView.prototype, "title", {
     get: function () { /* native call */ },
     set: function (newTitle) { /* native call  */ }
 });

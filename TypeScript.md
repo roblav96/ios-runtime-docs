@@ -11,14 +11,14 @@ class JSObject extends NSObject {
 
     public initWithCoder(aDecoder) { /* ... */ }
 
-    public 'selectorWithX:andY:'(x, y) { /* ... */ }
+    public "selectorWithX:andY:"(x, y) { /* ... */ }
 
     // An array of protocols to be implemented by the native class
     public static ObjCProtocols = [NSCoding];
 
     // A selector will be exposed so it can be called from native.
     public static ObjCExposedMethods = {
-        'selectorWithX:andY:': 'v@@'
+        "selectorWithX:andY:": { returns: interop.types.void, params: [interop.types.id, interop.types.id] }
     };
 }
 ```

@@ -13,8 +13,8 @@ TNSSwizzleKlass.prototype.instanceMethod = function (x) {
     return 2 * nativeInstanceMethod.apply(this, arguments);
 };
 
-var nativeProperty = Object.getOwnPropertyDescriptor(TNSSwizzleKlass.prototype, 'aProperty');
-Object.defineProperty(TNSSwizzleKlass.prototype, 'aProperty', {
+var nativeProperty = Object.getOwnPropertyDescriptor(TNSSwizzleKlass.prototype, "aProperty");
+Object.defineProperty(TNSSwizzleKlass.prototype, "aProperty", {
     get: function () {
         return 2 * nativeProperty.get.call(this);
     },

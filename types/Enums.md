@@ -41,7 +41,7 @@ console.log(NSLinguisticTaggerOptions.NSLinguisticTaggerOmitWhitespace); // 4
 
 You can also go from a numeric value to the name of that value in the enum:
 ```javascript
-console.log(MFMailComposeResult[2]); // 'MFMailComposeResultSent'
+console.log(MFMailComposeResult[2]); // "MFMailComposeResultSent"
 ```
 
 Anonymous enumeration types have their members as global constants. For example:
