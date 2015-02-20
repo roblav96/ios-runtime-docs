@@ -12,7 +12,7 @@ The repository contains the raw content files. To see the HTML representation of
 * [Overview](./overview.md)
 * [Requirements](./requirements.md)
 * Getting Started
-	* [Hello World Application](./getting-started/hello-world.md)
+  * [Hello World Application](./getting-started/hello-world.md)
 * iOS Types
   * [Objective-C Classes](./types/ObjC-Classes.md)
   * [Objective-C Categories](./types/ObjC-Categories.md)

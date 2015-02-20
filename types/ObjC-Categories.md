@@ -5,29 +5,27 @@ description: "Describes how Objective-C categories are exposed."
 position: 0
 ---
 
-# Objective-C Categories
-The Objective-C categories are powerful mechanism for extending existing Objective-C classes or grouping common API together.
+# Objective-C categories
+The Objective-C categories are powerful mechanism for extending existing Objective-C classes or grouping common APIs together.
 
-Consider the NSStringPathExtensions category on NSString:
-``` Objective-C
-@interface NSString (NSStringPathExtensions)
+Consider the `NSURLPathUtilities` category on `NSURL`:
+```objective-c
+@interface NSURL (NSURLPathUtilities)
++ (NSURL *)fileURLWithPathComponents:(NSArray *)components;
 @property (readonly, copy) NSArray *pathComponents;
-- (NSString *)stringByAppendingPathComponent:(NSString *)str;
 // ...
 @end
 ```
 
-It adds on the Objective-C NSString some properties and methods.
+It adds on the Objective-C `NSURL` class some properties and methods.
 
-They will be exposed as static or instance methods and properties on the JavaScript constructor function and prototype object generated for NSString (see [Objective-C Classes](ObjC-Classes.md)).
+They will be exposed as static methods on the JavaScript constructor function or instance methods and properties on the prototype object generated for `NSURL` (see [Objective-C Classes](ObjC-Classes.md)).
 
 You can use them from JavaScript:
-``` JavaScript
-var foo = NSString.stringWithString("foo");
-var fooBar = foo.stringByAppendingPathComponent("bar");
-var foo = foo.pathComponents;
+``` javascript
+var url = NSURL.fileURLWithPathComponents(["foo", "bar"]);
+console.log(url); // "foo/bar -- file:///"
+console.log(url.pathComponents); // ["/", "foo", "bar"]
 ```
 
-> **NOTE:** Marshaling of strings will convert NSString to JavaScript string back and forth when they are passed or retrieved from native methods or functions, with the exception of NSString methods that are factory functions or initializers. [See detailed information in marshalling](../Marshalling.md).
-
-Objective-C Categories can also implement Objective-C Protocols but this doesn't have special effect on the JavaScript objects beside the exposed functions and properties.
+Objective-C categories can implement Objective-C protocols and their methods and properties will be also exposed.

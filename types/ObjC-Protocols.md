@@ -6,23 +6,36 @@ position: 0
 ---
 
 #Objective-C Protocols
-Objective-C protocols describe an API Objective-C classes may implement. JavaScript as dynamic language does not have a matching counterpart. For every Objective-C Protocol we expose a JavaScript object that identifies the protocol. These objects can be used in the extension API to create derived Objective-C classes that implement the protocols.
+Objective-C protocols describe an API Objective-C classes may implement. JavaScript does not have a matching counterpart. For every Objective-C Protocol we expose a JavaScript object that identifies the protocol.
 
-For example given the Objective-C classes:
-``` Objective-C
+For example given the following Objective-C declarations:
+```objective-c
 @protocol MyProtocol
- - helloWorld;
+- (void)helloWorld;
 @end
+
 @interface MyClass : NSObject <MyProtocol>
 @end
 ```
 
 Will be exposed as:
-``` JavaScript
-// Will log 'true'
-console.log(MyClass.conformsToProtocol(MyProtocol));
+```javascript
+console.log(MyClass.conformsToProtocol(MyProtocol)); // true
 
-// Will log 'true'
 var instance = MyClass.alloc().init();
-console.log(instance.conformsToProtocol(MyProtocol));
+console.log(instance.conformsToProtocol(MyProtocol)); // true
+instance.helloWorld();
+```
+
+These objects can be used in the extension API to create derived Objective-C classes that implement the protocols:
+```javascript
+var protocol = NSProtocolFromString("MyProtocol");
+console.log(NSStringFromProtocol(protocol)); // "MyProtocol"
+console.log(protocol === MyProtocol); // true
+```
+
+In case of conflicts with other types, the name has the `Protocol` suffix.
+```javascript
+var klass = NSObject;
+var protocol = NSObjectProtocol;
 ```
