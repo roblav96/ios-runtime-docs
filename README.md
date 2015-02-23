@@ -12,15 +12,17 @@ The repository contains the raw content files. To see the HTML representation of
 * Overview
 * Requirements
 * Getting Started
-  * Hello World Application
+  * [Hello World Application](HelloWorld.md)
 * iOS Types
   * [Objective-C Classes](types/ObjC-Classes.md)
   * [Objective-C Categories](types/ObjC-Categories.md)
   * [Objective-C Protocols](types/ObjC-Protocols.md)
   * [Enums](types/Enums.md)
   * [C Variables](types/C-Variables.md)
-  * C Functions
+  * [C Functions](types/C-Functions.md)
   * C Structs
+  * C Pointers
 * How-to
   * [Subclassing Objective-C Classes](how-to/ObjC-Subclassing.md)
   * [Objective-C Swizzling](how-to/ObjC-Swizzling.md)
+* Contributors
