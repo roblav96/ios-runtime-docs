@@ -1,3 +1,10 @@
+---
+nav-title: "Globals"
+title: "Globals"
+description: "List of available global variables."
+position: 0
+---
+
 # Globals
 
 ## `console`

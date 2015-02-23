@@ -38,9 +38,6 @@ if (error) {
 
 Note that you shouldn't make any `retain/release` calls explicitly.
 
-## Using CoreFoundation objects
-We have implemented implicit toll-free bridging for `CFTypeRef`-s so you could pass for example a `NSArray` to a type that expects `CFArray`. If a method returns `CFArray` you will recieve `NSArray` respectively. You don't have to worry about `create`/`copy` conventions and again you shouldn't call `CFRetain`/`CFRelease` explicitly. The memory managment of these objects is handled by NativeScript.
-
 ## Using function pointers
 In order to use a plain JavaScript function as a function pointer you must first make the call to `NativePointer.create(<Function>)`. It will modify the given function and return it. You have to call `delete` when you or the API you have passed it to have finished using it.
 

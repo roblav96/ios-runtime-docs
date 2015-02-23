@@ -17,11 +17,15 @@ The repository contains the raw content files. To see the HTML representation of
   * [Objective-C Classes](types/ObjC-Classes.md)
   * [Objective-C Categories](types/ObjC-Categories.md)
   * [Objective-C Protocols](types/ObjC-Protocols.md)
-  * [Enums](types/Enums.md)
-  * [C Variables](types/C-Variables.md)
+  * [Objective-C Blocks](types/ObjC-Blocks.md)
   * [C Functions](types/C-Functions.md)
-  * C Structs
-  * C Pointers
+  * [C Structs](types/C-Structs.md)
+  * [C Enums](types/C-Enums.md)
+  * [C Global Variables](types/C-Global-Variables.md)
+  * [C Pointers](types/C-Pointers.md)
+  * [C Function Pointers](types/C-Function-Pointers.md)
+* [Globals](Globals.md)
+* [Marshalling](Marshalling.md)
 * How-to
   * [Subclassing Objective-C Classes](how-to/ObjC-Subclassing.md)
   * [Objective-C Swizzling](how-to/ObjC-Swizzling.md)
