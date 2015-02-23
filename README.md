@@ -9,15 +9,18 @@ position: 0
 The repository contains the raw content files. To see the HTML representation of these visit [nativescript.com/documentation](http://nsbuild01/docs/README.html).
 
 ## Table of contents
-* [Overview](overview.md)
-* [Requirements](requirements.md)
+* Overview
+* Requirements
 * Getting Started
-  * [Hello World Application](HelloWorld.md)
+  * Hello World Application
 * iOS Types
   * [Objective-C Classes](types/ObjC-Classes.md)
   * [Objective-C Categories](types/ObjC-Categories.md)
   * [Objective-C Protocols](types/ObjC-Protocols.md)
   * [Enums](types/Enums.md)
+  * [C Variables](types/C-Variables.md)
+  * C Functions
+  * C Structs
 * How-to
   * [Subclassing Objective-C Classes](how-to/ObjC-Subclassing.md)
   * [Objective-C Swizzling](how-to/ObjC-Swizzling.md)
