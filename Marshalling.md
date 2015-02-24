@@ -50,7 +50,7 @@ NSArray.prototype = {
 }
 ```
 
-Instances of Objective-C classes exist in JavaScript as special "wrapper" exotic objects - they keep track and reference native objects, as well as manage their memory. When a native API returns an Objective-C object, NativeScript constructs such a wrapper for it in case one doesn't already exist. Wrappers have a prototype just like regular JavaScript objects. This prototype is the same as the prototype of the JavaScript constructor function that exposes the class the native object is an instance of. In essence:
+Instances of Objective-C classes exist in JavaScript as special "wrapper" exotic objects - they keep track of and reference native objects, as well as manage their memory. When a native API returns an Objective-C object, NativeScript constructs such a wrapper for it in case one doesn't already exist. Wrappers have a prototype just like regular JavaScript objects. This prototype is the same as the prototype of the JavaScript constructor function that exposes the class the native object is an instance of. In essence:
 ```javascript
 var tableViewController = new UITableViewController(); // returns a wrapper around a UITableViewController instance
 Object.getPrototypeOf(tableViewController) === UITableViewController.prototype; // returns true
