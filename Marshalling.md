@@ -43,8 +43,8 @@ position: 0
 | `void*`            | [Pointer](types/C-Pointers)                 |
 | `<type>*`          | [Reference](Interop.md)                     |
 | `<type>[]`         | [Reference](Interop.md)                     |
-| Function pointer   | function                                    |
-| Objective-C block  | function                                    |
+| Function pointer   | [function](types/C-Function-Pointers.md)    |
+| Objective-C block  | [function](types/ObjC-Blocks)               |
 | Structure          | [wrapper object](types/C-Structures.md)     |
 
 ### Marshalling `instancetype` type
@@ -86,7 +86,7 @@ console.log(nsArray[1]); // -7
 ### `CFTypeRef` Marshalling
 Objects that inherit from [`CFTypeRef`](https://developer.apple.com/library/ios/documentation/CoreFoundation/Reference/CFTypeRef/index.html) are marshalled as plain [Pointers](types/C-Pointers.md) and no automatic memory managment is done. You should call `CFRetain`/`CFRelease` to track the lifetime of these objects:
 
-```
+```javascript
 var bag = CFBagCreate(kCFAllocatorDefault, values, count, null);
 // ...
 CFRelease(bag);
