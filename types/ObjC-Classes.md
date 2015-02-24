@@ -197,5 +197,9 @@ In Objective-C the getter methods by default have the name of the property and t
 
 In Objective-C you can specify custom getter/setter method names. In this case the specified getter/setter methods will be called by the property descriptor and are not exposed in JavaScript.
 
+## Casting
+
+TODO: ...
+
 ## Inheriting Native Classes in JavaScript
 [You can subclass Objective-C classes in JavaScript.](../how-to/ObjC-Subclassing.md)
