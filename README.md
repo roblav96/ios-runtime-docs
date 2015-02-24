@@ -8,7 +8,7 @@ position: 0
 # Welcome to NativeScript's iOS Runtime Documentation.
 The repository contains the raw content files. To see the HTML representation of these visit [nativescript.com/documentation](http://nsbuild01/docs/README.html).
 
-## Table of contents
+## Table of Contents
 * Overview
 * Requirements
 * Getting Started

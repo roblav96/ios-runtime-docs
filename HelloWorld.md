@@ -5,6 +5,8 @@ description: "A simple hello-world application"
 position: 0
 ---
 
+# Hello World Application
+
 In `bootstrap.js`:
 
 ```javascript

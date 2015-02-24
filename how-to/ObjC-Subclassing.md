@@ -1,17 +1,17 @@
 ---
-nav-title: "Subclassing Objective-C classes"
-title: "Subclassing Objective-C classes"
+nav-title: "Subclassing Objective-C Classes"
+title: "Subclassing Objective-C Classes"
 description: "How to extend Objective-C classes and implement protocol from JavaScript."
 position: 0
 ---
 
-# Subclassing Objective-C classes
+# Subclassing Objective-C Classes
 For [Objective-C classes](../types/ObjC-Classes.md) we have JavaScript constructor functions and for [Objective-C protocols](../types/ObjC-Protocols.md) we have objects. They can be used to subclass an Objective-C class or implement Objective-C protocol from JavaScript.
 
-### Subclassing an Objective-C class
+### Subclassing an Objective-C Class
 The constructor functions have a static method called **`extend`** used to declare Objective-C subclasses from JavaScript.
 
-### Implementing protocols
+### Implementing Protocols
 To implement a protocol use the **`extend`** method on an Objective-C class, the implemented protocols are provided in the `extend` arguments.
 
 ## Extend
@@ -19,7 +19,7 @@ The **`extend`** method has the following usage:
 
 `var <DerivedClass> = <BaseClass>.extend(classMembers, [nativeSignature]);`
 
-#### classMembers
+#### `classMembers`
 The properties of the `classMembers` argument define the instance class members:
  * *methods* - define or override instance class methods
  * *properties* - define or override class properties
@@ -32,7 +32,7 @@ To override Objective-C properties you have to use JavaScript getters/setters (E
 
 This parameter of `extend` is set as prototype to the instances created by the constructor. You shouldn't reuse it for other `extend` calls.
 
-#### nativeSignature
+#### `nativeSignature`
 The `nativeSignature` argument is optional, it has the following properties:
  * **name** - optional, string with the derived class name
  * **protocols** - optional, array with the implemented protocols
@@ -51,7 +51,7 @@ The `type object` in general is one of the:
  * A primitive types in the `interop.types` object
  * In rare cases can be a reference type, struct type etc. described with the interop API
 
-## Calling base methods
+## Calling Base Methods
 Calls to native base class methods in overrides are in the form:
 
 `<BaseTypeName>.prototype.<MethodName>.apply(this, arguments);`
@@ -62,7 +62,7 @@ or
 
 Getting or setting properties using the base getters and setters is possible through the `super` property.
 
-### Subclass example
+### Subclass Example
 The following example subclasses the `UIViewController`:
 ```javascript
 var MyViewController = UIViewController.extend({
@@ -92,7 +92,7 @@ var MyViewController = UIViewController.extend({
 });
 ```
 
-### Protocol implementation example
+### Protocol Implementation Example
 The following example implements the `UIApplicationDelegate` protocol:
 ```javascript
 var MyAppDelegate = UIResponder.extend({
@@ -114,7 +114,7 @@ var MyAppDelegate = UIResponder.extend({
 
 You can implement only some methods of the protocol. If a not implemented method is called an exception will be raised at runtime. You can implement only some or none of the optional methods.
 
-### Exposed method example
+### Exposed Method Example
 The following example shows how you can create a new instance method accessible from Objective-C APIs, that is declared in JavaScript:
 ```javascript
 var MyViewController = UIViewController.extend({
@@ -141,7 +141,7 @@ var MyViewController = UIViewController.extend({
 });
 ```
 
-### Overriding initializers
+### Overriding Initializers
 Initializers should always return a reference to the object itself, and if it cannot be initialized, it should return `null`. This is why we need to check if `self` exists before trying to use it.
 ```javascript
 var MyObject = NSObject.extend({
@@ -156,7 +156,7 @@ var MyObject = NSObject.extend({
 });
 ```
 
-## TypeScript support
+## TypeScript Support
 
 You can use TypeScript to inherit from native classes.
 

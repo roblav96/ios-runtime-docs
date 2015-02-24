@@ -5,7 +5,7 @@ description: "Describes how Objective-C classes are exposed."
 position: 0
 ---
 
-# Objective-C classes
+# Objective-C Classes
 Objective-C classes are exposed as JavaScript classes. Each Objective-C class is presented by a pair of corresponding JavaScript constructor function and a prototype object.
 
 The methods declared in the Objective-C classes are exposed:
@@ -14,7 +14,7 @@ The methods declared in the Objective-C classes are exposed:
 
 For Objective-C properties, JavaScript property descriptors are declared on the prototype object.
 
-## Prototype chain
+## Prototype Chain
 The prototype chain of the JavaScript objects matches the inheritance chain of the represented Objective-C classes. For example:
 
 ```objective-c
@@ -59,7 +59,7 @@ DerivedClass.prototype = Object.create(NSObject.prototype, { constructor: Derive
 DerivedClass.prototype.derivedInstanceMethod = function () { /* native call */ };
 ```
 
-### JavaScript `instanceof` opereator
+### JavaScript `instanceof` Opereator
 You can use the JavaScript [`instanceof` operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof) to see if an object inherits from a given class:
 ```javascript
 var object = DerivedClass.alloc().init();
@@ -69,7 +69,7 @@ console.log(object instanceof NSObject); // true
 console.log(object instanceof Object); // true
 ```
 
-## Instantiating objects
+## Instantiating Objects
 
 ### `alloc`, `init` or `new`
 Objective-C instances are created using:
@@ -86,7 +86,7 @@ var view1 = UIView.alloc().init();
 var view2 = UIView.new();
 ```
 
-### JavaScript `new` operator
+### JavaScript `new` Operator
 The [`new` operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new) used with JavaScript constructor function for Objective-C class will try to match an appropriate initializer based on the number and types of the arguments. However when a class has more complex initializers, it is impossible to unambiguously select one at runtime. So we would like to discourage you from using `new`, but still in some simple cases it is more convenient:
 
 ```javascript
@@ -112,7 +112,7 @@ var instance = UIAlertView.alloc().init();
 instance.dismissWithClickedButtonIndexAnimated(0, true);
 ```
 
-### Static methods
+### Static Methods
 Static methods are exposed in JavaScript as functions that call the underlying native methods. They are defined as properties on the constructor function. Since the constructor functions of derived classes have for prototype their base class constructor function, static methods are inherited.
 
 For example:
@@ -136,7 +136,7 @@ DerivedClass.derivedStaticMethod();
 
 If `DerivedClass` overrides `baseStaticMethod` the correct override will be called, even if it is not declared in the header.
 
-### Instance methods
+### Instance Methods
 Instance methods are exposed in JavaScript as functions that call the underlying native methods. They are defined as properties on the prototype object. Since the prototype objects of derived classes have for prototype their base class' prototype, instance methods are inherited.
 
 For example:
@@ -197,5 +197,5 @@ In Objective-C the getter methods by default have the name of the property and t
 
 In Objective-C you can specify custom getter/setter method names. In this case the specified getter/setter methods will be called by the property descriptor and are not exposed in JavaScript.
 
-## Inheriting native classes in JavaScript
+## Inheriting Native Classes in JavaScript
 [You can subclass Objective-C classes in JavaScript.](../how-to/ObjC-Subclassing.md)

@@ -5,7 +5,7 @@ description: "Describes how Objective-C categories are exposed."
 position: 0
 ---
 
-# Objective-C categories
+# Objective-C Categories
 The Objective-C categories are powerful mechanism for extending existing Objective-C classes or grouping common APIs together.
 
 Consider the `NSURLPathUtilities` category on `NSURL`:

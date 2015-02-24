@@ -5,7 +5,7 @@ description: "Describes how C functions are exposed."
 position: 0
 ---
 
-# C functions
+# C Functions
 C functions are exposed in the JavaScript context as JavaScript functions.
 Consider the following C declarations:
 ```objective-c
@@ -36,7 +36,7 @@ For more information about function arguments see:
  * Marshalling
  * [C Pointers](C-Pointers.md)
 
-## Variadic functions are not available
+## Variadic Functions are not Available
 All variadic C functions are not available:
 ```objective-c
 int fprintf(FILE *, const char *, ...);
@@ -48,7 +48,7 @@ CF_EXPORT
 CFStringRef CFStringCreateWithFormatAndArguments(CFAllocatorRef alloc, CFDictionaryRef formatOptions, CFStringRef format, va_list arguments) CF_FORMAT_FUNCTION(3,0);
 ```
 
-## Inline functions are not available
+## Inline Functions are not Available
 Inline functions are not available at runtime. Consider the following:
 ```objective-c
 NS_INLINE MKCoordinateSpan MKCoordinateSpanMake(CLLocationDegrees latitudeDelta, CLLocationDegrees longitudeDelta)

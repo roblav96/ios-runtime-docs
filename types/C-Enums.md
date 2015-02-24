@@ -1,6 +1,6 @@
 ---
-nav-title: "Enums"
-title: "Enums"
+nav-title: "C Enums"
+title: "C Enums"
 description: "Describes how enumerated types are exposed."
 position: 0
 ---

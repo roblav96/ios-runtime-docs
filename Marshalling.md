@@ -70,7 +70,7 @@ console.log(nsArray[1]); // JavaScript date: "Sun Sep 09 2001 04:46:40 GMT+0300 
 console.log(nsArray[2]); // JavaScript null
 ```
 
-### Object subscripting
+### Object Subscripting
 Objects such as `NSMutableArray*`, `PHFetchResult*` and other which respond to `objectAtIndexedSubscript:`/`setObject:atIndexedSubscript:` selectors can use indexers to get/set value at index:
 
 ```javascript
@@ -83,7 +83,7 @@ nsArray[1] = -7;
 console.log(nsArray[1]); // -7
 ```
 
-### `CFTypeRef` marshalling
+### `CFTypeRef` Marshalling
 Objects that inherit from [`CFTypeRef`](https://developer.apple.com/library/ios/documentation/CoreFoundation/Reference/CFTypeRef/index.html) are marshalled as plain [Pointers](types/C-Pointers.md) and no automatic memory managment is done. You should call `CFRetain`/`CFRelease` to track the lifetime of these objects:
 
 ```
