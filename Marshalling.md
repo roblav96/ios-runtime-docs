@@ -109,10 +109,10 @@ More information on how NativeScript deals with Objective-C classes is available
 ## Objective-C protocols
 Protocols in Objective-C are like interaces in other languages - they are blueprints of what members a class should contain, a sort of an API contract. Protocols are exposed as empty objects in JavaScript. Protocols are usually only referenced when [subclassing]() an Objective-C class or when checking whether an object or class conforms to a protocol.
 ```objective-c
-BOOL isFastEnumerable = [NSArray conformsToProtocol:@protocol(NSCopying)];
+BOOL isCopying = [NSArray conformsToProtocol:@protocol(NSCopying)];
 ```
 ```javascript
-var isFastEnumerable = NSArray.conformsToProtocol(NSCopying);
+var isCopying = NSArray.conformsToProtocol(NSCopying);
 ```
 
 ## Objective-C selectors
