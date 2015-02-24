@@ -19,7 +19,7 @@ The repository contains the raw content files. To see the HTML representation of
   * [Objective-C Protocols](types/ObjC-Protocols.md)
   * [Objective-C Blocks](types/ObjC-Blocks.md)
   * [C Functions](types/C-Functions.md)
-  * [C Structs](types/C-Structs.md)
+  * [C Structures](types/C-Structures.md)
   * [C Enums](types/C-Enums.md)
   * [C Global Variables](types/C-Global-Variables.md)
   * [C Pointers](types/C-Pointers.md)
