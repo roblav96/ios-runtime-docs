@@ -8,7 +8,6 @@ position: 0
 # Marshalling
 
 ## Native to JavaScript
-
 | Native             | JavaScript                                  |
 | ------             | ----------                                  |
 | `id`               | wrapper object                              |
@@ -91,6 +90,36 @@ var bag = CFBagCreate(kCFAllocatorDefault, values, count, null);
 // ...
 CFRelease(bag);
 ```
+
+## JavaScript to Native
+| Native            | JavaScript                                                                                                                                                                                                                                                                                          |
+| ------            | ----------                                                                                                                                                                                                                                                                                          |
+| `int8_t`          | `undefined`/`null`/`boolean`/`number`/`string`/`object`*                                                                                                                                                                                                                                       |
+| `uint8_t`         | `undefined`/`null`/`boolean`/`number`/`string`/`object`*                                                                                                                                                                                                                                       |
+| `int16_t`         | `undefined`/`null`/`boolean`/`number`/`string`/`object`*                                                                                                                                                                                                                                       |
+| `uint16_t`        | `undefined`/`null`/`boolean`/`number`/`string`/`object`*                                                                                                                                                                                                                                       |
+| `int32_t`         | `undefined`/`null`/`boolean`/`number`/`string`/`object`*                                                                                                                                                                                                                                       |
+| `uint32_t`        | `undefined`/`null`/`boolean`/`number`/`string`/`object`*                                                                                                                                                                                                                                       |
+| `int64_t`         | `undefined`/`null`/`boolean`/`number`/`string`/`object`*                                                                                                                                                                                                                                       |
+| `uint64_t`        | `undefined`/`null`/`boolean`/`number`/`string`/`object`*                                                                                                                                                                                                                                       |
+| `float`           | `undefined`/`null`/`boolean`/`number`/`string`/`object`*                                                                                                                                                                                                                                       |
+| `double`          | `undefined`/`null`/`boolean`/`number`/`string`/`object`*                                                                                                                                                                                                                                       |
+| `true`/`false`    | `undefined`/`null`/`boolean`/`number`/`string`/`object`*                                                                                                                                                                                                                                       |
+| `YES`/`NO`        | `undefined`/`null`/`boolean`/`number`/`string`/`object`*                                                                                                                                                                                                                                       |
+| `unichar`         | single character string                                                                                                                                                                                                                                                                             |
+| `void*`           | `undefined`/`null`/[`Pointer`](types/C-Pointers.md)/[`Reference`](types/C-Pointers.md)/[`ArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)/[`ArrayBufferView`](https://developer.mozilla.org/en-US/docs/Web/API/ArrayBufferView)          |
+| `type*`           | `undefined`/`null`/[`Pointer`](types/C-Pointers.md)/[`Reference`](types/C-Pointers.md)/[`ArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)/[`ArrayBufferView`](https://developer.mozilla.org/en-US/docs/Web/API/ArrayBufferView)          |
+| `type[]`          | `undefined`/`null`/[`Pointer`](types/C-Pointers.md)/[`Reference`](types/C-Pointers.md)/[`ArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)/[`ArrayBufferView`](https://developer.mozilla.org/en-US/docs/Web/API/ArrayBufferView)          |
+| `char*`           | `undefined`/`null`/[`Pointer`](types/C-Pointers.md)/[`Reference`](types/C-Pointers.md)/[`ArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)/[`ArrayBufferView`](https://developer.mozilla.org/en-US/docs/Web/API/ArrayBufferView)/`string` |
+| Function pointer  | `undefined`/`null`/[`FunctionReference`](types/C-Function-Pointers.md)/[`Pointer`](types/C-Pointers.md)                                                                                                                                                                                             |
+| Objective-C block | `undefined`/`null`/`function`                                                                                                                                                                                                                                                                       |
+| `id`              | `undefined`/`null`/wrapper object/[constructor object](types/ObjC-Classes.md)/`boolean`/`number`/`string`/`array`/`Date`                                                                                                                                                                            |
+| `NSData*`         | `undefined`/`null`/wrapper object/[`ArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)/[`ArrayBufferView`](https://developer.mozilla.org/en-US/docs/Web/API/ArrayBufferView)                                                               |
+| Structure         | [wrapper object](types/C-Structures.md)/JSON object                                                                                                                                                                                                                                                 |
+
+ * [ToNumber](http://ecma262-5.com/ELS5_HTML.htm#Section_9.3)
+ * [ToBoolean](http://ecma262-5.com/ELS5_HTML.htm#Section_9.2)
+
 
 ## Limitations
 
