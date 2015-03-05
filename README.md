@@ -26,7 +26,8 @@ The repository contains the raw content files. To see the HTML representation of
   * [C Function Pointers](types/C-Function-Pointers.md)
 * Marshalling
   * [Overview](marshalling/Overview.md)
-* Debugging
+* Debug
+  * [Debug on Device](debug/Debug-on-Device.md)
 * How-to
   * [Subclassing Objective-C Classes](how-to/ObjC-Subclassing.md)
   * [Objective-C Swizzling](how-to/ObjC-Swizzling.md)
