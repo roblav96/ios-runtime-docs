@@ -94,7 +94,7 @@ rect.size.height = 3; // Doesn't work as expected
 console.log(rect.size.height); // 0
 ```
 
-A temporary CGSize is created and its height is set to 3. The size of the `rect` structure is still 0.
+A temporary `CGSize` is created and its height is set to 3. The size of the `rect` structure is still 0.
 
 ## Limitations
  * Structures with arrays are not supported.
