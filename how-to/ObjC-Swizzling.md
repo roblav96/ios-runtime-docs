@@ -2,7 +2,7 @@
 nav-title: "Objective-C Swizzling"
 title: "Objective-C Swizzling"
 description: "How to swizzle Objective-C methods."
-position: 0
+position: 1
 ---
 
 # Objective-C Swizzling
