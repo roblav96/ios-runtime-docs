@@ -17,6 +17,7 @@ The repository contains the raw content files. To see the HTML representation of
   * [C Global Variables](types/C-Global-Variables.md)
   * [C Pointers](types/C-Pointers.md)
   * [C Function Pointers](types/C-Function-Pointers.md)
+  * [Runtime Types](types/Runtime-Types.md)
 * Marshalling
   * [Overview](marshalling/Marshalling-Overview.md)
 * Debug

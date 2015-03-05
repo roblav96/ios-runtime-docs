@@ -5,10 +5,11 @@ description: "Describes how C pointers are exposed."
 position: 8
 ---
 
-
 # C Pointers
 
 ## `interop.Pointer`
+This type represents a `void*`.
+
 ```typescript
 interface Pointer {
     /**
@@ -88,6 +89,8 @@ function handleof(instance: any): Pointer;
 ```
 
 ## `interop.Reference`
+This type represents a `<type>*` or `<type>[]`. You can use it with the [runtime types](../types/Runtime-Types.md).
+
 ```typescript
 /**
  * A type that wraps a pointer and allows read/write operations on its value.
@@ -134,3 +137,69 @@ var Reference: {
 ```
 
 You can pass [ArrayBuffers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) where a pointer is expected.
+
+`NULL` pointer is marshalled as JavaScript `null`.
+
+## Examples
+
+### NSString
+
+```objective-c
+@interface NSString : NSObject
+- (void)getCharacters:(unichar *)buffer;
+@end
+```
+
+#### Raw pointers
+```javascript
+var nsstring = NSString.stringWithString("test");
+
+// Calls the native C malloc function. You must call free when finished using it.
+var buffer = malloc(4 * interop.sizeof(interop.types.unichar));
+
+nsstring.getCharacters(buffer); // Fill the buffer
+
+// Reinterpret the void* buffer as unichar*. The reference variable doesn't retain the allocated buffer.
+var reference = new interop.Reference(interop.types.unichar, buffer);
+console.log(reference[0], reference[1], reference[2], reference[3]); // "t" "e" "s" "t"
+
+free(buffer); // Same as interop.free(buffer)
+```
+
+#### Smart pointers
+```javascript
+var nsstring = NSString.stringWithString("test");
+
+// The allocated memory will be deleted when the buffer and reference variables get garbage collected
+var buffer = interop.alloc(4 * interop.sizeof(interop.types.unichar));
+
+nsstring.getCharacters(buffer); // Fill the buffer
+
+// Reinterpret the void* buffer as unichar*
+var reference = new interop.Reference(interop.types.unichar, buffer);
+console.log(reference[0], reference[1], reference[2], reference[3]); // "t" "e" "s" "t"
+```
+
+### UIView
+Pointers are a powerful instrument and must be use cautiously. For example we can do some pointer arithmetic to access the fields of an `UIView` object:
+
+```objective-c
+@interface UIView {
+  @package
+    CALayer *_layer;
+    id _gestureInfo;
+    // ...
+@end
+```
+
+```javascript
+var object = new UIView();
+
+var ptr = interop.handleof(object);
+console.log(ptr); // <Pointer: 0x7f9d28d9df10>
+
+var ref = new interop.Reference(interop.types.id, ptr);
+console.log(ref[0]); // isa: UIView
+console.log(ref[1]); // _layer: CALayer
+console.log(ref[2]); // _gestureInfo: null
+```

@@ -46,7 +46,7 @@ The native method signature object has two properties:
  * **returns** - required, type object
  * **params** - required, an array of type objects
 
-The `type object` in general is one of the:
+The `type object` in general is one of the [runtime types](../types/Runtime-Types.md):
  * A constructor function, that identifies the Objective-C class
  * A primitive types in the `interop.types` object
  * In rare cases can be a reference type, struct type etc. described with the interop API
