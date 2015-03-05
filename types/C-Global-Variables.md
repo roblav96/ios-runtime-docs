@@ -2,7 +2,7 @@
 nav-title: "C Global Variables"
 title: "C Global Variables"
 description: "Describes how C globale variables are exposed."
-position: 0
+position: 7
 ---
 
 # C Global Variables

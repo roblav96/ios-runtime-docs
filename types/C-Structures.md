@@ -2,7 +2,7 @@
 nav-title: "C Structures"
 title: "C Structures"
 description: "Describes how structures are exposed."
-position: 0
+position: 5
 ---
 
 # Structures

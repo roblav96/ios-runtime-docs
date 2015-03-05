@@ -2,7 +2,7 @@
 nav-title: "C Functions"
 title: "C Functions"
 description: "Describes how C functions are exposed."
-position: 0
+position: 4
 ---
 
 # C Functions
