@@ -1,10 +1,3 @@
----
-nav-title: "Welcome to iOS Runtime for NativeScript"
-title: "iOS Runtime for NativeScript"
-description: "NativeScript iOS Runtime Documentation Introduction"
-position: 0
----
-
 # Welcome to NativeScript's iOS Runtime Documentation.
 The repository contains the raw content files. To see the HTML representation of these visit [nativescript documentation](http://docs.nativescript.org).
 
@@ -12,7 +5,7 @@ The repository contains the raw content files. To see the HTML representation of
 * [Overview](Overview.md)
 * [Requirements](Requirements.md)
 * Getting Started
-  * [Hello World Application](HelloWorld.md)
+  * [Hello World Application](getting-started/HelloWorld.md)
 * iOS Types
   * [Objective-C Classes](types/ObjC-Classes.md)
   * [Objective-C Categories](types/ObjC-Categories.md)
