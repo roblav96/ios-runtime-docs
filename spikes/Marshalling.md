@@ -1,10 +1,3 @@
----
-nav-title: "Marshalling"
-title: "Marshalling "
-description: "Describes how JavaScript objects are marshalled to Objective-C and back."
-position: 0
----
-
 # Marshalling
 
 ## Native to JavaScript
