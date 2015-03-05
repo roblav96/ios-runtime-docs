@@ -68,7 +68,9 @@ function free(ptr: Pointer): void;
 ```typescript
 /**
  * Returns the size of the provided type.
- * @param type A class constructor (of Objective-C interface), an instance (wrapper of Objective-C interface), struct constructor, struct instance, reference, protocol, function (for c function), fundamental types.
+ * @param type A class constructor (of Objective-C interface),
+ * an instance (wrapper of Objective-C interface), struct constructor, struct instance,
+ * reference, protocol, function (for c function), fundamental types.
  */
 function sizeof(type: any): number;
 ```
@@ -77,7 +79,9 @@ function sizeof(type: any): number;
 ```typescript
 /**
  * From a JavaScript object gets a pointer to the backing native object.
- * @param instance A class constructor (of Objective-C interface), an instance (wrapper of Objective-C interface), struct instance, reference, protocol, function (for c function) or block.
+ * @param instance A class constructor (of Objective-C interface),
+ * an instance (wrapper of Objective-C interface), struct instance, reference,
+ * protocol, function (for c function) or block.
  * @return The native pointer handle
  */
 function handleof(instance: any): Pointer;
