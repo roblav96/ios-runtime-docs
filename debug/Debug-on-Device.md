@@ -23,5 +23,5 @@ tns debug ios --start
 The command will start a Safari with the inspector tool and connect to the running app.
 
 ## Debugging Traffic
-The debugging trafic will be networked from the Safari through localhost:8080 to the device's port 8080. Currently we do not support changing the port numbers so if these ports are reserved from other applications the Inspector may fail to connect.
+The debugging traffic will be networked from the Safari through localhost:8080 to the device's port 8080. Currently we do not support changing the port numbers so if these ports are reserved from other applications the Inspector may fail to connect.
 
