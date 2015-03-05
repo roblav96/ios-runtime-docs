@@ -2,7 +2,7 @@
 nav-title: "C Enums"
 title: "C Enums"
 description: "Describes how enumerated types are exposed."
-position: 0
+position: 6
 ---
 
 # Enums

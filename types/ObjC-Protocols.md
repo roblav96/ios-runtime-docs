@@ -2,7 +2,7 @@
 nav-title: "Objective-C Protocols"
 title: "Objective-C Protocols"
 description: "Describes how Objective-C protocols are exposed."
-position: 0
+position: 2
 ---
 
 # Objective-C Protocols

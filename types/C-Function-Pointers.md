@@ -2,7 +2,7 @@
 nav-title: "C Function Pointers"
 title: "C Function Pointers"
 description: "Describes how function pointers are exposed."
-position: 0
+position: 9
 ---
 
 # Function Pointers

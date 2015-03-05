@@ -9,8 +9,8 @@ position: 0
 The repository contains the raw content files. To see the HTML representation of these visit [nativescript documentation](http://docs.nativescript.org).
 
 ## Table of Contents
-* Overview
-* Requirements
+* [Overview](Overview.md)
+* [Requirements](Requirements.md)
 * Getting Started
   * [Hello World Application](HelloWorld.md)
 * iOS Types
@@ -24,8 +24,10 @@ The repository contains the raw content files. To see the HTML representation of
   * [C Global Variables](types/C-Global-Variables.md)
   * [C Pointers](types/C-Pointers.md)
   * [C Function Pointers](types/C-Function-Pointers.md)
-* [Globals](Globals.md)
-* [Marshalling](Marshalling.md)
+* Marshalling
+  * [Overview](marshalling/Overview.md)
+* Debug
+  * [Debug on Device](debug/Debug-on-Device.md)
 * How-to
   * [Subclassing Objective-C Classes](how-to/ObjC-Subclassing.md)
   * [Objective-C Swizzling](how-to/ObjC-Swizzling.md)
