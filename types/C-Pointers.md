@@ -2,7 +2,7 @@
 nav-title: "C Pointers"
 title: "C Pointers"
 description: "Describes how C pointers are exposed."
-position: 0
+position: 8
 ---
 
 
