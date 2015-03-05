@@ -9,6 +9,50 @@ position: 0
 
 In `bootstrap.js`:
 
+```objective-c
+#import <UIKit/UIKit.h>
+
+// RootViewController
+@interface RootViewController : UIViewController
+- (void)viewDidLoad;
+@end
+
+@implementation RootViewController
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 250, 60)];
+    label.text = @"Hello, World!";
+
+    label.center = self.view.center;
+    label.textAlignment = NSTextAlignmentCenter;
+
+    [self.view addSubview:label];
+}
+@end
+
+// AppDelegate
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@property (strong, nonatomic) UIWindow *window;
+@end
+
+@implementation AppDelegate
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = [[RootViewController alloc] init];
+    [self.window makeKeyAndVisible];
+    return true;
+}
+@end
+
+// Main
+int main(int argc, char * argv[]) {
+    @autoreleasepool {
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+    }
+}
+```
 ```javascript
 var RootViewController = UIViewController.extend({
     viewDidLoad: function() {
@@ -18,7 +62,7 @@ var RootViewController = UIViewController.extend({
         label.text = "Hello, World!";
 
         label.center = this.view.center;
-        label.textAlignment = UITextAlignment.UITextAlignmentCenter;
+        label.textAlignment = NSTextAlignment.NSTextAlignmentCenter;
 
         this.view.addSubview(label);
     }
