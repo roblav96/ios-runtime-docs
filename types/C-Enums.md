@@ -58,4 +58,4 @@ enum {
 console.log(NSUTF8StringEncoding); // 4
 ```
 
-> **NOTE:** Values that fall out of the `int32_t` range are not supported. See [marshalling](Marshalling.md) for details.
+> **NOTE:** Values that fall out of the `int32_t` range are not supported. See [marshalling](../Marshalling.md) for details.

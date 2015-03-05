@@ -38,8 +38,8 @@ position: 0
 | `true`/`false`     | boolean                                     |
 | `YES`/`NO`         | boolean                                     |
 | `@YES`/`@NO`       | boolean                                     |
-| `CFTypeRef`        | [Pointer](types/C-Pointers)                 |
-| `void*`            | [Pointer](types/C-Pointers)                 |
+| `CFTypeRef`        | [Pointer](types/C-Pointers.md)              |
+| `void*`            | [Pointer](types/C-Pointers.md)              |
 | `<type>*`          | [Reference](Interop.md)                     |
 | `<type>[]`         | [Reference](Interop.md)                     |
 | Function pointer   | [function](types/C-Function-Pointers.md)    |
