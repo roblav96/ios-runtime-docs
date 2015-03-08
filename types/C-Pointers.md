@@ -181,7 +181,7 @@ console.log(reference[0], reference[1], reference[2], reference[3]); // "t" "e" 
 ```
 
 ### `UIView`
-Pointers are a powerful instrument and must be use cautiously. For example we can do some pointer arithmetic to access the fields of an `UIView` object:
+Pointers are a powerful instrument and should be used cautiously. For example we can do some pointer arithmetic to access the fields of an `UIView` object:
 
 ```objective-c
 @interface UIView {
