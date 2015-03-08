@@ -36,11 +36,11 @@ You can use the [struct constructor](C-Structures.md) as a type.
 ## Objective-C Objects
 You can use the [class constructor](ObjC-Classes.md) as a type.
 
-## `interop.ReferenceType`
+## `interop.types.ReferenceType`
 You can create new reference types, passing the inner type as argument.
 
-## `interop.FunctionReferenceType`
+## `interop.types.FunctionReferenceType`
 You can create new function reference types, passing the return type and parameter types as arguments.
 
-## `interop.BlockType`
+## `interop.types.BlockType`
 You can create new block types, passing the return type and parameter types as arguments..
