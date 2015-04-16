@@ -21,7 +21,7 @@ The repository contains the raw content files. To see the HTML representation of
 * Marshalling
   * [Overview](marshalling/Marshalling-Overview.md)
 * Debug
-  * [Debug on Device](debug/Debug-on-Device.md)
+  * [Debug on Device and Emulator](debug/Debug.md)
 * How-to
   * [Subclassing Objective-C Classes](how-to/ObjC-Subclassing.md)
   * [Objective-C Swizzling](how-to/ObjC-Swizzling.md)
