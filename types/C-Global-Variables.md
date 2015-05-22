@@ -32,5 +32,5 @@ if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_6_1) {
 }
 ```
 
-## Anonymous Enums
-The members of [anonymous enums](C-Enums.md) are exposed as global variables in JavaScript similar to C variables.
+## Enums Members
+The members of [enums](C-Enums.md) are exposed as global variables in JavaScript similar to C variables.
