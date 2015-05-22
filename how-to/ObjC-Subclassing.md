@@ -58,7 +58,7 @@ Calls to native base class methods in overrides are in the form:
 
 or
 
-`this.super.<MethodName>.apply(this, arguments);`
+`this.super.<MethodName>(<arguments>);`
 
 Getting or setting properties using the base getters and setters is possible through the `super` property.
 
