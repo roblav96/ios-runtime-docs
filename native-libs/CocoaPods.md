@@ -7,7 +7,7 @@ position: 1
 
 # Using CocoaPods
 
-#### Create CLI Project
+## Create CLI Project
 To start, create a project, add the iOS platform, prepare the iOS platform. The CLI would generate an Xcode project for you.
 ```bash
 $ tns create MYCocoaPods
@@ -17,7 +17,7 @@ $ tns prepare ios
 ```
 You will have Xcode project in `platforms/ios/MYCocoaPods.xcodeproj`.
 
-#### Install CocoaPods
+## Install CocoaPods
 You will need to install cocoa pods. If you haven't yet, you can do so by:
 ```
 $ sudo gem install cocoapods
@@ -27,6 +27,8 @@ This article is written with 0.37.1, you can check your current version using:
 $ pod --version
 ```
 To update CocoaPods just install the gem again with `sudo gem install cocoapods`.
+
+## Use the Google Maps SDK
 
 #### Add Podfile with Dependencies
 Create a Podfile as sibling to the `platforms/ios/MYCocoaPods.xcodeproj` and add the dependencies. We will use the [Google Maps SDK](https://developers.google.com/maps/documentation/ios/start) for the example:
@@ -43,7 +45,7 @@ It will augment the MYCocoaPods.xcodeproj and create a workspace with the same n
 
 > **NOTE:** From that point on you will not be able to run the xcodeproj alone, (nor the CLI since it too works with the xcodeproj) you will have to run your project from the workspace. The workflow would be to open the MYCocoaPods.xcworkspace in Xcode, then execute `$ tns prepare ios` in terminal and run the app from Xcode. We will implement support for workspaces in the CLI for v1.2.0.
 
-#### Use the Google Maps SDK
+#### The application code
 We will set up the following app from our Hello World template:
 
 ![CocoaPods-GoogleMaps.png](CocoaPods-GoogleMaps.png)
@@ -66,7 +68,7 @@ application.start();
 
 And then to place a map in the UI:
 ``` XML
-<!-- main-page.js -->
+<!-- main-page.xml -->
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
   <GridLayout rows="auto, auto, auto, *">
     <Label row="0" text="Tap the button" cssClass="title"/>
@@ -79,6 +81,7 @@ And then to place a map in the UI:
 
 And the code behind to initialize the map placeholder:
 ``` JavaScript
+<!-- main-page.js -->
 var vmModule = require("./main-view-model");
 function pageLoaded(args) {
     var page = args.object;
@@ -109,6 +112,7 @@ function createMapView(args) {
 exports.createMapView = createMapView;
 ```
 
+## Using the AFNetworking and iCarousel
 #### CocoaPods Module Maps OR use_frameworks!
 We generate metadata from Objective-C headers. The APIs are exposed in JavaScript using algorithm similar to how swift exposes Objective-C. In the process we need, the relatively new, clang modules declarations for Objective-C. They are declared using module map files.
 
@@ -156,13 +160,13 @@ This should be enough to enable the two pods in your project. Note that the AFNe
 
 > **NOTE:** Once again, we would recommend you simply target iOS8+ and `use_frameworks!`.
 
-#### Using the AFNetworking and iCarousel
+#### The application code
 We will implement the carousel app in a few lines of JavaScript:
 
 ![iCarousel](CocoaPods-iCarousel.png)
 
-Use the following `app/main-page.xml`:
 ```XML
+<!-- main-page.xml -->
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
   <GridLayout rows="auto, auto, auto, *">
     <Label row="0" text="Tap the button" cssClass="title"/>
@@ -173,8 +177,8 @@ Use the following `app/main-page.xml`:
 </Page>
 ```
 
-Along with the `app/main-page.js`:
 ``` JavaScript
+<!-- main-page.js -->
 var vmModule = require("./main-view-model");
 function pageLoaded(args) {
     var page = args.object;
@@ -226,5 +230,5 @@ function createCarouselView(args) {
 exports.createCarouselView = createCarouselView;
 ```
 
-#### What is Next
+## What is Next
 We are looking into integrating pods with our plug-in mechanism. In the long term, we should be able to provide a cross platform abstraction on frameworks, such as the GoogleMaps SDK, so you can simply set them up in XML, and use them across all supported mobile platforms.
