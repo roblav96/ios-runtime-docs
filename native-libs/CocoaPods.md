@@ -7,57 +7,79 @@ position: 1
 
 # Using CocoaPods
 
+When you develop for iOS, you can quickly add third party libraries to your NativeScript projects via [CocoaPods](https://cocoapods.org/), a dependency manager for Swift and Objective-C Cocoa projects.
+
+## Table of Contents
+ * [Create CLI Project](#create-cli-project)
+ * [Install CocoaPods](#install-cocoapods)
+ * [Example: Using Google Maps SDK](#example-using-google-maps-sdk)
+    * [Add Podfile with Dependencies](#add-podfile-with-dependencies)
+	* [Google Maps Code](#google-maps-code)
+ * [Example: Using the AFNetworking and iCarousel](#example-using-the-afnetworking-and-icarousel)
+    * [CocoaPods use_frameworks or Module Maps](#cocoapods-use_frameworks-or-module-maps)
+       * [Use Frameworks](#use-frameworks)
+	   * [Module Maps](#module-maps)
+	* [Carousel Code](#carousel-code)
+ * [What is Next](#what-is-next)
+
 ## Create CLI Project
-To start, create a project, add the iOS platform, prepare the iOS platform. The CLI would generate an Xcode project for you.
+To start, create a project, add the iOS platform and prepare the iOS platform.
 ```bash
 $ tns create MYCocoaPods
 $ cd MYCocoaPods
 $ tns platform add ios
 $ tns prepare ios
 ```
-You will have Xcode project in `platforms/ios/MYCocoaPods.xcodeproj`.
+The CLI generates an Xcode project for you in `platforms/ios/MYCocoaPods.xcodeproj`.
 
 ## Install CocoaPods
-You will need to install cocoa pods. If you haven't yet, you can do so by:
+You will need to install CocoaPods. If you haven't yet, you can do so by:
 ```
 $ sudo gem install cocoapods
 ```
-This article is written with 0.37.1, you can check your current version using:
+> **NOTE:** All operations and code in this article are verified against CocoaPods 0.37.1.
+
+You can check your current version using:
 ```
 $ pod --version
 ```
-To update CocoaPods just install the gem again with `sudo gem install cocoapods`.
 
-## Use the Google Maps SDK
-
-#### Add Podfile with Dependencies
-Create a Podfile as sibling to the `platforms/ios/MYCocoaPods.xcodeproj` and add the dependencies. We will use the [Google Maps SDK](https://developers.google.com/maps/documentation/ios/start) for the example:
+To update CocoaPods just install the gem again with:
 ```
+sudo gem install cocoapods
+```
+
+## Example: Using Google Maps SDK
+The following example shows how to add the [Google Maps SDK for iOS](https://developers.google.com/maps/documentation/ios/) using CocoaPods in your project and display a simple map.
+
+![CocoaPods-GoogleMaps.png](CocoaPods-GoogleMaps.png)
+
+### Add Podfile with Dependencies
+Create a [Podfile](https://guides.cocoapods.org/syntax/podfile.html) as sibling to the `platforms/ios/MYCocoaPods.xcodeproj`, with the following content:
+``` Ruby
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.1'
 pod 'GoogleMaps'
 ```
-Then install the pod dependencies. This should be executed in `platform/ios`:
+
+Next install the pod dependencies:
 ```
+$ cd platform/ios
 $ pod install
 ```
-It will augment the MYCocoaPods.xcodeproj and create a workspace with the same name.
+It will modifies the `MYCocoaPods.xcodeproj` and create a workspace with the same name.
 
-> **NOTE:** From that point on you will not be able to run the xcodeproj alone, (nor the CLI since it too works with the xcodeproj) you will have to run your project from the workspace. The workflow would be to open the MYCocoaPods.xcworkspace in Xcode, then execute `$ tns prepare ios` in terminal and run the app from Xcode. We will implement support for workspaces in the CLI for v1.2.0.
+> **IMPORTANT:** You will no longer be able to run the `xcodeproj` alone or from the CLI. You need to run your project from the newly created workspace. Make sure to open the `MYCocoaPods.xcworkspace` in Xcode first. Next, in the terminal run `$ tns prepare ios` and then run the app from Xcode. We will provide support for workspaces in a future version of the CLI.
 
-#### The application code
-We will set up the following app from our Hello World template:
-
-![CocoaPods-GoogleMaps.png](CocoaPods-GoogleMaps.png)
-
-To actually use the Google Maps you will have to provide API key in "applicationDidFinishLaunchingWithOptions". The cross platform UI modules expose callback, that is invoked in our AppDelegate. There you can register the key:
+### Google Maps Code
+To actually use the Google Maps you will have to provide API key in `applicationDidFinishLaunchingWithOptions`. The cross-platform UI modules expose callback, that is invoked in our AppDelegate. There you can register an API key:
 ``` JavaScript
 // app.js
 var application = require("application");
 
 application.onLaunch = function() {
-    console.log('Providing GoogleMap API key...');
-    // NOTE: Use the Google documentation to obtain API key: https://developers.google.com/maps/documentation/ios/start
+    console.log('Providing Google Map API key...');
+    // NOTE: Visit the Google documentation to learn how to obtain an API key: https://developers.google.com/maps/documentation/ios/start
     GMSServices.provideAPIKey("***************************************");
 }
 
@@ -66,7 +88,7 @@ application.cssFile = "./app.css";
 application.start();
 ```
 
-And then to place a map in the UI:
+Next, place a map in the UI:
 ``` XML
 <!-- main-page.xml -->
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
@@ -79,9 +101,9 @@ And then to place a map in the UI:
 </Page>
 ```
 
-And the code behind to initialize the map placeholder:
+The following code initializes the map placeholder:
 ``` JavaScript
-<!-- main-page.js -->
+// main-page.js
 var vmModule = require("./main-view-model");
 function pageLoaded(args) {
     var page = args.object;
@@ -100,7 +122,7 @@ function createMapView(args) {
 
     console.log("Setting a marker...");
     marker = GMSMarker.alloc().init();
-    // Note that in-line functions such as CLLocationCoordinate2DMake are not exported.
+    // NOTE: In-line functions such as CLLocationCoordinate2DMake are not exported.
     marker.position = { latitude: -33.86, longitude: 151.20 }
     marker.title = "Sydney";
     marker.snippet = "Australia";
@@ -112,15 +134,19 @@ function createMapView(args) {
 exports.createMapView = createMapView;
 ```
 
-## Using the AFNetworking and iCarousel
-#### CocoaPods Module Maps OR use_frameworks!
-We generate metadata from Objective-C headers. The APIs are exposed in JavaScript using algorithm similar to how swift exposes Objective-C. In the process we need, the relatively new, clang modules declarations for Objective-C. They are declared using module map files.
+## Example: Using the AFNetworking and iCarousel
+We will implement a simple carousel app in a few lines of JavaScript using the [iCarousel](https://github.com/nicklockwood/iCarousel) pod.
 
-[For more information about module maps check here.](http://clang.llvm.org/docs/Modules.html#umbrella-directory-declaration).
+![iCarousel](CocoaPods-iCarousel.png)
 
-##### Use Frameworks
-[CocoaPods now support Swift and dynamic frameworks](http://blog.cocoapods.org/CocoaPods-0.36/).
-```
+### CocoaPods use_frameworks or Module Maps
+The NativeScript framework for iOS generate metadata from Objective-C headers. The APIs are exposed in JavaScript using an algorithm similar to how Swift exposes Objective-C. In the process, we need the relatively new clang modules declarations for Objective-C. They are declared using module map files.
+
+You can find more information about module maps [here](http://clang.llvm.org/docs/Modules.html#umbrella-directory-declaration).
+
+#### Use Frameworks
+[CocoaPods now support Swift and dynamic frameworks.](http://blog.cocoapods.org/CocoaPods-0.36/) You can use the following CocoaPod [Podfile](https://guides.cocoapods.org/syntax/podfile.html) in `platforms\ios\Podfile`:
+``` Ruby
 platform :ios, '8.0'
 use_frameworks!
 
@@ -128,12 +154,12 @@ pod 'iCarousel'
 pod 'AFNetworking'
 ```
 
-Once you install the pods with the `use_frameworks!` enabled the pods will be packed in dynamic frameworks. The good part is that each pod will have its `module.modulemap` declared so you would be good to go with no extra manual setup. The down-side is these dynamic frameworks are supported in iOS 8+. While the static version, with manual module maps, can be used in iOS 7.
+After you install the pods with the `use_frameworks!` enabled, the pods will be packed in dynamic frameworks. The upside is that each pod will have its `module.modulemap` declared so you would be good to go with no extra manual setup. The downside is these dynamic frameworks are supported in iOS 8+.
 
-##### Module Maps
-The GoogleMaps SDK had nicely done module map placed in `Pods/GoogleMaps/Frameworks/GoogleMaps.framework/Modules/module.modulemap`. It is there even if you do not `use_frameworks!`. For some CocoaPods however, you will have to provide module maps by hand.
+#### Module Maps
+The Google Maps SDK had a nicely done module map placed in `Pods/GoogleMaps/Frameworks/GoogleMaps.framework/Modules/module.modulemap`. The module map is available in this location even if you have not set `use_frameworks!` in the Podfile. However, for some CocoaPods, you need to provide module maps by hand.
 
-Let's consider the following CocoaPod Podfile:
+The following CocoaPods [Podfile](https://guides.cocoapods.org/syntax/podfile.html) does not set `use_frameworks!`:
 ```
 platform :ios, '8.0'
 
@@ -141,7 +167,7 @@ pod 'iCarousel'
 pod 'AFNetworking'
 ```
 
-Installing it with `pod install` will pull the two libraries. They do not have module maps (yet). If you want to use them you will have to add the following module maps in the file `platforms/ios/module.modulemap`:
+Running `$ pod install` pulls the two pods but will not generate module maps for them. If you want to use these libraries, you need to add the following module maps in the file `platforms/ios/module.modulemap`:
 ```
 module AFNetworking {
   umbrella "Pods/Headers/Public/AFNetworking"
@@ -156,15 +182,12 @@ module iCarousel {
 }
 ```
 
-This should be enough to enable the two pods in your project. Note that the AFNetworking.h umbrella header does not include the categories on UIImageView so the whole directory is declared as umbrella directory, while the iCarousel.h has just on header anyway so it is declared as umbrella header.
+This should be enough to enable the two pods in your project. Note that the `AFNetworking.h` umbrella header does not include the categories on UIImageView. That's why the whole directory is declared as umbrella directory. The `iCarousel.h` has just on header, so it is declared as an umbrella header.
 
-> **NOTE:** Once again, we would recommend you simply target iOS8+ and `use_frameworks!`.
+> **NOTE:** We would recommend you simply target iOS8+ and `use_frameworks!`.
 
-#### The application code
-We will implement the carousel app in a few lines of JavaScript:
-
-![iCarousel](CocoaPods-iCarousel.png)
-
+### Carousel Code
+To implement the carousel add the following UI declaration:
 ```XML
 <!-- main-page.xml -->
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
@@ -177,8 +200,9 @@ We will implement the carousel app in a few lines of JavaScript:
 </Page>
 ```
 
+Next, handle the carousel initialization:
 ``` JavaScript
-<!-- main-page.js -->
+// main-page.js
 var vmModule = require("./main-view-model");
 function pageLoaded(args) {
     var page = args.object;
@@ -194,7 +218,7 @@ var CarouselData = NSObject.extend({
     },
 
     numberOfItemsInCarousel: function(carousel) {
-        console.log("Numbers of items: " + this._items.length);
+        console.log("Number of items: " + this._items.length);
         return this._items.length;
     },
 
@@ -231,4 +255,4 @@ exports.createCarouselView = createCarouselView;
 ```
 
 ## What is Next
-We are looking into integrating pods with our plug-in mechanism. In the long term, we should be able to provide a cross platform abstraction on frameworks, such as the GoogleMaps SDK, so you can simply set them up in XML, and use them across all supported mobile platforms.
+We are looking into integrating pods with our [plug-in](https://github.com/NativeScript/NativeScript/issues/25) mechanism. In the long term, we should be able to provide a cross platform abstraction on frameworks, such as the Google Maps SDK, so you can simply set them up in XML, and use them across all supported mobile platforms.
