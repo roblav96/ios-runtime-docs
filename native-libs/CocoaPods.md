@@ -33,7 +33,7 @@ $ tns prepare ios
 The CLI generates an Xcode project for you in `platforms/ios/MYCocoaPods.xcodeproj`.
 
 ## Install CocoaPods
-You will need to install CocoaPods. If you haven't yet, you can do so by:
+You need to install CocoaPods. If you haven't yet, you can do so by:
 ```
 $ sudo gem install cocoapods
 ```
@@ -67,12 +67,12 @@ Next install the pod dependencies:
 $ cd platform/ios
 $ pod install
 ```
-It will modifies the `MYCocoaPods.xcodeproj` and create a workspace with the same name.
+This modifies the `MYCocoaPods.xcodeproj` and creates a workspace with the same name.
 
 > **IMPORTANT:** You will no longer be able to run the `xcodeproj` alone or from the CLI. You need to run your project from the newly created workspace. Make sure to open the `MYCocoaPods.xcworkspace` in Xcode first. Next, in the terminal run `$ tns prepare ios` and then run the app from Xcode. We will provide support for workspaces in a future version of the CLI.
 
 ### Google Maps Code
-To actually use the Google Maps you will have to provide API key in `applicationDidFinishLaunchingWithOptions`. The cross-platform UI modules expose callback, that is invoked in our AppDelegate. There you can register an API key:
+To actually use the Google Maps you will have to provide an API key in `applicationDidFinishLaunchingWithOptions`. The cross-platform UI modules expose callback, that is invoked in our AppDelegate. There you can register an API key:
 ``` JavaScript
 // app.js
 var application = require("application");
@@ -140,7 +140,7 @@ We will implement a simple carousel app in a few lines of JavaScript using the [
 ![iCarousel](CocoaPods-iCarousel.png)
 
 ### CocoaPods use_frameworks or Module Maps
-The NativeScript framework for iOS generate metadata from Objective-C headers. The APIs are exposed in JavaScript using an algorithm similar to how Swift exposes Objective-C. In the process, we need the relatively new clang modules declarations for Objective-C. They are declared using module map files.
+The NativeScript framework for iOS generates metadata from Objective-C headers. The APIs are exposed in JavaScript using an algorithm similar to how Swift exposes Objective-C. In the process, we need the relatively new clang modules declarations for Objective-C. They are declared using module map files.
 
 You can find more information about module maps [here](http://clang.llvm.org/docs/Modules.html#umbrella-directory-declaration).
 
@@ -154,7 +154,7 @@ pod 'iCarousel'
 pod 'AFNetworking'
 ```
 
-After you install the pods with the `use_frameworks!` enabled, the pods will be packed in dynamic frameworks. The upside is that each pod will have its `module.modulemap` declared so you would be good to go with no extra manual setup. The downside is these dynamic frameworks are supported in iOS 8+.
+After you install the pods with the `use_frameworks!` enabled, the pods will be packed in dynamic frameworks. The upside is that each pod will have its `module.modulemap` declared so you would be good to go with no extra manual setup. The downside is these dynamic frameworks are supported in iOS 8+ and your app must target the iOS 8 SDK to be able to use them.
 
 #### Module Maps
 The Google Maps SDK had a nicely done module map placed in `Pods/GoogleMaps/Frameworks/GoogleMaps.framework/Modules/module.modulemap`. The module map is available in this location even if you have not set `use_frameworks!` in the Podfile. However, for some CocoaPods, you need to provide module maps by hand.
@@ -167,7 +167,7 @@ pod 'iCarousel'
 pod 'AFNetworking'
 ```
 
-Running `$ pod install` pulls the two pods but will not generate module maps for them. If you want to use these libraries, you need to add the following module maps in the file `platforms/ios/module.modulemap`:
+Running `$ pod install` pulls the two pods but does not generate module maps for them. If you want to use these libraries, you need to add the following module maps in the file `platforms/ios/module.modulemap`:
 ```
 module AFNetworking {
   umbrella "Pods/Headers/Public/AFNetworking"
@@ -182,7 +182,7 @@ module iCarousel {
 }
 ```
 
-This should be enough to enable the two pods in your project. Note that the `AFNetworking.h` umbrella header does not include the categories on UIImageView. That's why the whole directory is declared as umbrella directory. The `iCarousel.h` has just on header, so it is declared as an umbrella header.
+This should be enough to enable the two pods in your project. Note that the `AFNetworking.h` umbrella header does not include the categories on UIImageView. That's why the whole directory is declared as umbrella directory. The `iCarousel.h` has a single header, so it is declared as an umbrella header.
 
 > **NOTE:** We would recommend you simply target iOS8+ and `use_frameworks!`.
 
@@ -255,4 +255,4 @@ exports.createCarouselView = createCarouselView;
 ```
 
 ## What is Next
-We are looking into integrating pods with our [plug-in](https://github.com/NativeScript/NativeScript/issues/25) mechanism. In the long term, we should be able to provide a cross platform abstraction on frameworks, such as the Google Maps SDK, so you can simply set them up in XML, and use them across all supported mobile platforms.
+We are looking into integrating pods with our [plug-in](https://github.com/NativeScript/NativeScript/issues/25) mechanism. In the long term, we should be able to provide a cross-platform abstraction on frameworks, such as the Google Maps SDK, so you can simply set them up in XML, and use them across all supported mobile platforms.
