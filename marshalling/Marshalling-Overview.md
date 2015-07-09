@@ -186,6 +186,44 @@ var view = UIView.alloc().initWithFrame(rect);
 
 More information on how NativeScript deals with structures is available [here](types/C-Structures.md).
 
+## `NSError **` marshalling
+### Native to JavaScript
+
+```objective-c
+@interface NSFileManager : NSObject
++ (NSFileManager *)defaultManager;
+- (NSArray *)contentsOfDirectoryAtPath:(NSString *)path error:(NSError **)error;
+@end
+```
+
+We can use this method from JavaScript in the following way:
+
+```javascript
+var fileManager = NSFileManager.defaultManager();
+var bundlePath = NSBundle.mainBundle().bundlePath;
+
+console.log(fileManager.contentsOfDirectoryAtPathError(bundlePath, null));
+```
+
+If we want to check the error using out parameters:
+```javascript
+var errorRef = new interop.Reference();
+fileManager.contentsOfDirectoryAtPathError('/not-existing-path', errorRef);
+console.log(errorRef.value); // NSError: "The folder '/not-existing-path' doesn't exist."
+```
+
+Or we can skip passing the **last NSError **** out parameter and a JavaScript error will be thrown if the `NSError **` is set from native:
+```javascript
+try {
+    fileManager.contentsOfDirectoryAtPathError('/not-existing-path');
+} catch (e) {
+    console.log(e); // NSError: "The folder '/not-existing-path' doesn't exist."
+}
+```
+
+### JavaScript to native
+When overriding a method having **NSError ** out parameter in the end** any thrown JavaScript error will be wrapped and set to the `NSError **` argument (if given).
+
 ## Pointer Types
 Languages in the C family have the notion of a pointer data type. A pointer is a value that points to another value, or, more accurately, to the location of that value in memory. JavaScript has no notion of pointers, but the pointer data type is used throughout the iOS SDK. To overcome this, NativeScript introduces the `Reference` object. References are special objects which allow JavaScript to reason about and access pointer values. Consider this example:
 ```objective-c
