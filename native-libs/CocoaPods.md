@@ -1,10 +1,3 @@
----
-nav-title: "CocoaPods"
-title: "Using CocoaPods"
-description: "How to install and use CocoaPods with NativeScript for iOS."
-position: 1
----
-
 # Using CocoaPods
 
 When you develop for iOS, you can quickly add third party libraries to your NativeScript projects via [CocoaPods](https://cocoapods.org/), a dependency manager for Swift and Objective-C Cocoa projects.
