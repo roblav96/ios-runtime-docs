@@ -84,7 +84,7 @@ application.start();
 Next, place a map in the UI:
 ``` XML
 <!-- main-page.xml -->
-<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded">
   <GridLayout rows="auto, auto, auto, *">
     <Label row="0" text="Tap the button" cssClass="title"/>
     <Button row="1" text="TAP" tap="{{ tapAction }}" />
@@ -183,7 +183,7 @@ This should be enough to enable the two pods in your project. Note that the `AFN
 To implement the carousel add the following UI declaration:
 ```XML
 <!-- main-page.xml -->
-<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded">
   <GridLayout rows="auto, auto, auto, *">
     <Label row="0" text="Tap the button" cssClass="title"/>
     <Button row="1" text="TAP" tap="{{ tapAction }}" />
