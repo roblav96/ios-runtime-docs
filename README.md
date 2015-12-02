@@ -25,4 +25,5 @@ The repository contains the raw content files. To see the HTML representation of
 * How-to
   * [Subclassing Objective-C Classes](how-to/ObjC-Subclassing.md)
   * [Objective-C Swizzling](how-to/ObjC-Swizzling.md)
-* Contributors
+* Limitations
+  * [Limitations](Limitations.md)
