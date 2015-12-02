@@ -134,6 +134,28 @@ var Reference: {
      */
     value: any;
 }
+
+/** A type for propagating an unmanaged object reference.
+ * When you use this type, you become partially responsible for
+ * keeping the object alive.
+ */
+interface Unmanaged<T> {
+    /**
+     * Get the value of this unmanaged reference as a managed
+     * reference and consume an unbalanced retain of it.
+     * This is useful when a function returns an unmanaged reference
+     * and you know that you're responsible for releasing the result.
+     */
+    takeRetainedValue(): T;
+
+    /**
+     * Get the value of this unmanaged reference as a managed
+     * reference without consuming an unbalanced retain of it.
+     * This is useful when a function returns an unmanaged reference
+     * and you know that you're not responsible for releasing the result.
+     */
+    takeUnretainedValue(): T;
+}
 ```
 
 You can pass [ArrayBuffers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) where a pointer is expected.
@@ -178,28 +200,4 @@ nsstring.getCharacters(buffer); // Fill the buffer
 // Reinterpret the void* buffer as unichar*
 var reference = new interop.Reference(interop.types.unichar, buffer);
 console.log(reference[0], reference[1], reference[2], reference[3]); // "t" "e" "s" "t"
-```
-
-### `UIView`
-Pointers are a powerful instrument and should be used cautiously. For example we can do some pointer arithmetic to access the fields of an `UIView` object:
-
-```objective-c
-@interface UIView {
-  @package
-    CALayer *_layer;
-    id _gestureInfo;
-    // ...
-@end
-```
-
-```javascript
-var object = new UIView();
-
-var ptr = interop.handleof(object);
-console.log(ptr); // <Pointer: 0x7f9d28d9df10>
-
-var ref = new interop.Reference(interop.types.id, ptr);
-console.log(ref[0]); // isa: UIView
-console.log(ref[1]); // _layer: CALayer
-console.log(ref[2]); // _gestureInfo: null
 ```

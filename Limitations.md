@@ -1,3 +1,10 @@
+---
+nav-title: "Limitations"
+title: "Limitations"
+description: "NativeScript iOS Runtime Limitations"
+position: 2
+---
+
 # Limitations
 
 The following members can not be accessed from JavaScript:

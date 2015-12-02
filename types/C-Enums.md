@@ -19,7 +19,7 @@ typedef enum my_enum_name {
 ```
 The name of the enum will be `MyEnumName`.
 
-Each enum object has **two properties** for every enum member - one is the full member name and the other is the short member name (the short member name is also used in swift to expose NS_ENUM and NS_OPTIONS enumerations). The short member names are generated from the full member names by removing the common prefix at the begining. 
+Each enum object has **two properties** for every enum member - one is the full member name and the other is the short member name (the short member name is also used in swift to expose NS_ENUM and NS_OPTIONS enumerations). The short member names are generated from the full member names by removing the common prefix at the beginning.
 > **Full member names are deprecated and will be removed in future versions, so it is not recommended to use them.**
 
 All enum members are also exposed as global variables (as properties of the global object). So you can use an enum member in three different ways.
@@ -69,4 +69,4 @@ console.log(MFMailComposeResult[2]); // logs "MFMailComposeResultSent", but in t
 
 > In the future, when full member names are removed the enum object indexer will return the short name of the member.
 
-> **NOTE:** Values that fall out of the `int32_t` range are not supported. See [marshalling](../Marshalling.md) for details.
+> **NOTE:** Values that fall out of the `int32_t` range are not supported. See [limitations](../Limitations.md) for details.

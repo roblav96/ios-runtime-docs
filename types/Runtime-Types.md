@@ -43,4 +43,4 @@ You can create new reference types, passing the inner type as argument.
 You can create new function reference types, passing the return type and parameter types as arguments.
 
 ## `interop.types.BlockType`
-You can create new block types, passing the return type and parameter types as arguments..
+You can create new block types, passing the return type and parameter types as arguments.

@@ -1,7 +1,7 @@
 ---
 nav-title: "C Global Variables"
 title: "C Global Variables"
-description: "Describes how C globale variables are exposed."
+description: "Describes how C global variables are exposed."
 position: 7
 ---
 
@@ -10,7 +10,7 @@ C global variables are available in JavaScript as JavaScript global variables.
 Consider the following C declaration:
 ```objective-c
 // NSObjCRuntime.h
-FOUNDATION_EXPORT double NSFoundationVersionNumber;
+double NSFoundationVersionNumber;
 ```
 
 It will export a JavaScript variable called `NSFoundationVersionNumber`:

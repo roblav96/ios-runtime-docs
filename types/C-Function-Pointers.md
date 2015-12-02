@@ -7,7 +7,7 @@ position: 9
 
 # Function Pointers
 
-To create a native function pointer from a JavaScript function you must use the  `interop.FunctionReference()` constructor which accepts a single parameter - a JavaScript function. You must keep the returned object alive as long as the native side would need it.
+To create a native function pointer from a JavaScript function you must use the `interop.FunctionReference()` constructor which accepts a single parameter - a JavaScript function. You must keep the returned object alive as long as the native side would need it.
 
 Example:
 ```objective-c
