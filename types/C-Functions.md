@@ -10,13 +10,13 @@ C functions are exposed in the JavaScript context as JavaScript functions.
 Consider the following C declarations:
 ```objective-c
 // UIGraphics.h
-UIKIT_EXTERN CGContextRef UIGraphicsGetCurrentContext(void);
+CGContextRef UIGraphicsGetCurrentContext();
 
 // CGContext.h
-CG_EXTERN void CGContextAddArc(CGContextRef c, CGFloat x, CGFloat y,
+void CGContextAddArc(CGContextRef c, CGFloat x, CGFloat y,
   CGFloat radius, CGFloat startAngle, CGFloat endAngle, int clockwise);
 
-CG_EXTERN void CGContextFillPath(CGContextRef c);
+void CGContextFillPath(CGContextRef c);
 ```
 
 You can use these C functions from JavaScript:

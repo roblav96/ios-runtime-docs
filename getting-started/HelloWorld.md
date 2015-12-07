@@ -7,7 +7,7 @@ position: 0
 
 # Hello World Application
 
-In `bootstrap.js`:
+In `index.js`:
 
 ```objective-c
 #import <UIKit/UIKit.h>
@@ -55,7 +55,7 @@ int main(int argc, char * argv[]) {
 ```
 ```javascript
 var RootViewController = UIViewController.extend({
-    viewDidLoad: function() {
+    viewDidLoad() {
         UIViewController.prototype.viewDidLoad.apply(this, arguments);
 
         var label = new UILabel(CGRectMake(0, 0, 250, 60));
@@ -69,7 +69,7 @@ var RootViewController = UIViewController.extend({
 });
 
 var AppDelegate = UIResponder.extend({
-    applicationDidFinishLaunchingWithOptions: function(application, launchOptions) {
+    applicationDidFinishLaunchingWithOptions(application, launchOptions) {
         this._window = new UIWindow(UIScreen.mainScreen().bounds);
         this._window.backgroundColor = UIColor.whiteColor();
         this._window.rootViewController = new RootViewController();
@@ -77,7 +77,7 @@ var AppDelegate = UIResponder.extend({
         return true;
     }
 }, {
-    protocols: [ UIApplicationDelegate ]
+    protocols: [UIApplicationDelegate]
 });
 
 UIApplicationMain(0, null, null, NSStringFromClass(AppDelegate.class()));

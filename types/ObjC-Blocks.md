@@ -30,7 +30,7 @@ myWork.progressBlock(0.33);
 ## JavaScript Functions to Objective-C Blocks
 When a JavaScript function instance has to be marshalled to Objective-C block we will create an Objective-C block. When the block is called it will invoke the JavaScript function. The signature of the block is inferred from the Objective-C declaration, and will be used for arguments and return type marshalling.
 
-For the following declarations of the NSArray:
+For the following declarations of the `NSArray`:
 ```objective-c
 // NSArray.h
 @interface NSArray (NSExtendedArray)
@@ -54,8 +54,3 @@ array.enumerateObjectsUsingBlock(function(item, index, boolRef) {
 ```
 
 > **NOTE:** Marshalling of a JavaScript function to Objective-C API where the "id" type is expected will not create an Objective-C block, because we can not infer the native Objective-C signature of the block.
-
-
-
-
-

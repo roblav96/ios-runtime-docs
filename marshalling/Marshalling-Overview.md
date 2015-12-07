@@ -223,7 +223,7 @@ try {
 }
 ```
 
-### JavaScript to native
+### JavaScript to Native
 When overriding a method having **NSError ** out parameter in the end** any thrown JavaScript error will be wrapped and set to the `NSError **` argument (if given).
 
 ## Pointer Types
