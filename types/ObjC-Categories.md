@@ -2,7 +2,7 @@
 nav-title: "Objective-C Categories"
 title: "Objective-C Categories"
 description: "Describes how Objective-C categories are exposed."
-position: 0
+position: 1
 ---
 
 # Objective-C Categories
@@ -20,6 +20,8 @@ Consider the `NSURLPathUtilities` category on `NSURL`:
 It adds on the Objective-C `NSURL` class some properties and methods.
 
 They will be exposed as static methods on the JavaScript constructor function or instance methods and properties on the prototype object generated for `NSURL` (see [Objective-C Classes](ObjC-Classes.md)).
+
+> **NOTE:** This applies also for Objective-C categories added by third-party frameworks.
 
 You can use them from JavaScript:
 ``` javascript
