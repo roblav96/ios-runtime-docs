@@ -10,8 +10,8 @@ NativeScript for iOS lets you include native libraries and consume their APIs fr
 For iOS, three types of library packages are available:
 
 1. Shared framework (`MyFramework.framework`): An ordinary shared library wrapped in a framework. Typically, contains the required `module.modulemap` file.
-1. Static framework (`MyFramework.framework`): An ordinary static library wrapped in a framework. Typically, doesn't contain the required `module.modulemap` file and you need to add it manually.
-1. Static library (`libMyLib.a`): Contains a headers folder (usually called `include`) with `.h` files.
+2. Static framework (`MyFramework.framework`): An ordinary static library wrapped in a framework. Typically, doesn't contain the required `module.modulemap` file and you need to add it manually.
+3. Static library (`libMyLib.a`): Contains a headers folder (usually called `include`) with `.h` files.
 
 You can use any of the following approaches to add and use a native library in your project:
 
