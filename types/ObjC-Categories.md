@@ -6,7 +6,7 @@ position: 1
 ---
 
 # Objective-C Categories
-Objective-C categories are powerful mechanism for extending existing Objective-C classes or grouping common APIs together.
+Objective-C categories are a powerful mechanism for extending existing Objective-C classes or grouping common APIs together.
 
 Consider the `NSURLPathUtilities` category on `NSURL`:
 ```objective-c
