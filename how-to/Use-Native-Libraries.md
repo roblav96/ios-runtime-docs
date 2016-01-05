@@ -79,3 +79,19 @@ NativeScript plugins also support merging of `.plist` files. If a library requir
 # Conclusion
 
 As a rule of thumb, avoid manual changes to the Xcode project file in the `/platforms/ios` folder. Always try to use CocoaPods with NativeScript plugins and shared frameworks. The second best option is a prebuilt static framework with manually added `module.modulemap` file, wrapped in a NativeScript plugin. Use the other options only as a last resort after making sure there is no better solution.
+
+# Troubleshooting
+
+Starting with version 1.4 of NativeScript for iOS, you are able to generate [debug metadata](../Overview.md#metadata) and [TypeScript declarations](https://typescript.codeplex.com/wikipage?title=Writing%20Definition%20%28.d.ts%29%20Files) for third-party libraries. This way you are able to see exactly what APIs are exposed to JavaScript.
+
+> **NOTE:** Swift APIs that are not [exported to Objective-C](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/InteractingWithObjective-CAPIs.html#//apple_ref/doc/uid/TP40014216-CH4-ID55) are not supported.
+
+Executing the following command from the root of your NativeScript app produces a `metadata` folder with a `.yaml` file for each Clang module:
+```shell
+$ TNS_DEBUG_METADATA_PATH="$(pwd)/metadata" tns build ios [--for-device] [--release]
+```
+
+Executing the following command from the root of your NativeScript app produces a `typings` folder with a `.d.ts` file for each Clang module:
+```shell
+$ TNS_TYPESCRIPT_DECLARATIONS_PATH="$(pwd)/typings" tns build ios [--for-device] [--release]
+```
