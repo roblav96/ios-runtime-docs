@@ -6,7 +6,7 @@ position: 2
 ---
 
 # AppInspector
-AppInspector is a powerful tool that makes it easy to inspect every resource of your application. With AppInspector, you can see the Safari developer tools in a clean, unified interface, which places each of its core functions in separate tabs. For more information on how to build, deploy, run the app, and simultaneously start AppInspector, click [here](https://github.com/NativeScript/nativescript-cli/blob/master/docs/man_pages/project/testing/debug.md).
+AppInspector is a powerful tool that makes it easy to inspect every resource of your application. With AppInspector, you can see the Safari developer tools in a clean, unified interface, which places each of its core functions in separate tabs. For more information on how to build, deploy, run the app, and simultaneously start AppInspector, click [here](../../../core-concepts/debugging.md).
 
 AppInspector for iOS supports the following core functionalities:
 
