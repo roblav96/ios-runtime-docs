@@ -95,3 +95,5 @@ Executing the following command from the root of your NativeScript app produces 
 ```shell
 $ TNS_TYPESCRIPT_DECLARATIONS_PATH="$(pwd)/typings" tns build ios [--for-device] [--release]
 ```
+
+If you have downloaded the [documentation set for iOS](https://developer.apple.com/library/ios/recipes/xcode_help-documentation_preferences/DownloadingandInstallingXcodeComponents/DownloadingandInstallingXcodeComponents.html), the command above will also include brief description in the form of a comment above every symbol in the generated `typings`. Most IDEs which support typescript IntelliSense will make use of these comments. Furthermore, you can generate structured documentation from these comments with tools like [TypeDoc](http://typedoc.io).
