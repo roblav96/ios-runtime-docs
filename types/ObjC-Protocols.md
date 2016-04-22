@@ -33,9 +33,25 @@ console.log(NSStringFromProtocol(protocol)); // "MyProtocol"
 console.log(protocol === MyProtocol); // true
 ```
 
-These objects can also be used in the [extension API](../how-to/ObjC-Subclassing.md) to create derived Objective-C classes that implement the protocols.
+Like [Objective-C classes](ObjC-Classes.md), Objective-C protocols too have a prototype and constructor methods. For example:
+```objective-c
+@protocol TNSProtocol
+@property int aProperty;
++ (void)staticMethod;
+- (void)instanceMethod;
+@end
+```
+```javascript
+var staticMethod = TNSProtocol.staticMethod;
+var instanceMethod = TNSProtocol.prototype.instanceMethod;
+var aProperty = Object.getOwnPropertyDescriptor(TNSProtocol.prototype, 'aProperty');
+```
 
-In case of conflicts with other types, the name has the `Protocol` suffix.
+Although these methods cannot be called directly, it can be useful in some rare cases to get the method from the protocol and [`call`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call)/[`apply`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply) it to an Objective-C object instance that privately conforms to the given protocol.
+
+These protocol wrapper objects can also be used in the [extension API](../how-to/ObjC-Subclassing.md) to create derived Objective-C classes that implement the protocols.
+
+> **NOTE:** In case of conflicts with other types, the name has the `Protocol` suffix.
 ```javascript
 var klass = NSObject;
 var protocol = NSObjectProtocol;
