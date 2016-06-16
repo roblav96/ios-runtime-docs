@@ -21,8 +21,8 @@ The **`extend`** method has the following usage:
 
 #### `classMembers`
 The properties of the `classMembers` argument define the instance class members:
- * *methods* - define or override instance class methods
- * *properties* - define or override class properties
+ * *methods* - define or override instance methods
+ * *properties* - define or override instance properties
 
 There are three type of methods, which can be contained in this object - base class overrides, native visible methods and pure JavaScript methods. The difference between native visible and pure Javascript methods is the that later are only accessible in your JavaScript code. Should you want the method to be visible and callable from the native libraries, you should provide a second parameter to `extend`. This parameter should provide the needed additional metadata about the method signature.
 
