@@ -166,13 +166,19 @@ If `DerivedClass` overrides `baseInstanceMethod` the correct override will be ca
 Objective-C properties are exposed as JavaScript property descriptors. For example consider the JavaScript objects generated for the following Objective-C interface:
 ```objective-c
 @interface UIAlertView
+@property (class) NSString *layerClass;
 @property (nonatomic, copy) NSString *title;
 @end
 ```
 
-The prototype for the `UIAlertView` class will have a property `title` that when get or assigned on JavaScript instances of `UIAlertView` will call the native Objective-C getter and setter methods:
+The `UIAlertView` constructor function will have a property `layerClass` that when get or assigned will call the native Objective-C getter and setter methods. Similarly the `UIAlertView` prototype will have a `title` property:
 
 ```javascript
+Object.defineProperty(UIAlertView, "layerClass", {
+    get: function () { /* native call */ },
+    set: function (newLayerClass) { /* native call  */ }
+});
+
 Object.defineProperty(UIAlertView.prototype, "title", {
     get: function () { /* native call */ },
     set: function (newTitle) { /* native call  */ }
@@ -181,6 +187,8 @@ Object.defineProperty(UIAlertView.prototype, "title", {
 
 You can use it in JavaScript:
 ```javascript
+console.log(UIAlertView.layerClass); // The layer class of UIAlertView
+
 var instance = UIAlertView.alloc.init();
 instance.title = "The title";
 console.log(instance.title); // "The title"

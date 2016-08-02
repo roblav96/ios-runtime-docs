@@ -99,7 +99,7 @@ var MyAppDelegate = UIResponder.extend({
     // Implement a method from UIApplicationDelegate.
     // We will obtain the method signature from the protocol.
     applicationDidFinishLaunchingWithOptions: function (application, launchOptions) {
-        this._window = new UIWindow(UIScreen.mainScreen().bounds);
+        this._window = new UIWindow(UIScreen.mainScreen.bounds);
         this._window.rootViewController = MyViewController.alloc().init();
         this._window.makeKeyAndVisible();
         return true;
@@ -185,5 +185,5 @@ There should be no TypeScript constructor, because it will not be executed. Inst
 ## Limitations
 
 * You shouldn't extend an already extended class
-* You can't override static methods
+* You can't override static methods or properties
 * You can't expose static methods or properties

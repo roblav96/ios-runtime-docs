@@ -201,8 +201,8 @@ More information on how NativeScript deals with structures is available [here](.
 We can use this method from JavaScript in the following way:
 
 ```javascript
-var fileManager = NSFileManager.defaultManager();
-var bundlePath = NSBundle.mainBundle().bundlePath;
+var fileManager = NSFileManager.defaultManager;
+var bundlePath = NSBundle.mainBundle.bundlePath;
 
 console.log(fileManager.contentsOfDirectoryAtPathError(bundlePath, null));
 ```
@@ -238,7 +238,7 @@ if (isDirectory) {
 ```
 This snippet calls the `fileExistsAtPath:isDirectory` method of the `NSFileManager` class. This method accepts a `NSString` as its first argument and a pointer to a boolean value as its second argument. During its execution the method will use the pointer to update the boolean value. This means it will directly change the value of `isDirectory`. The same code can be written as follows:
 ```javascript
-var fileManager = NSFileManager.defaultManager();
+var fileManager = NSFileManager.defaultManager;
 var isDirectory = new interop.Reference();
 var exists = fileManager.fileExistsAtPathIsDirectory("/var/log", isDirectory);
 if (isDirectory.value) {
