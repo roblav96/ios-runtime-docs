@@ -185,5 +185,5 @@ There should be no TypeScript constructor, because it will not be executed. Inst
 ## Limitations
 
 * You shouldn't extend an already extended class
-* You can't override static methods
+* You can't override static methods or properties
 * You can't expose static methods or properties
