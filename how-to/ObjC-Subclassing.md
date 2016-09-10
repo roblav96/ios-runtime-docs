@@ -182,8 +182,68 @@ class JSObject extends NSObject implements NSCoding {
 There should be no TypeScript constructor, because it will not be executed. Instead override one of the `init` methods.
 
 
+## TypeScript Delegate Example
+
+When working with native APIs, you'll find yourself having to setup delegates in order to recieve results or callbacks. For this example, we'll setup a delegate for the [Tesseract-OCR-iOS](https://github.com/gali8/Tesseract-OCR-iOS/wiki/Using-Tesseract-OCR-iOS#using-tesseract-object) API. 
+
+Let's first take a look at what the delegate typescript declarations look like:
+```typescript
+interface G8TesseractDelegate extends NSObjectProtocol {
+	preprocessedImageForTesseractSourceImage?(tesseract: G8Tesseract, sourceImage: UIImage): UIImage;
+	progressImageRecognitionForTesseract?(tesseract: G8Tesseract): void;
+	shouldCancelImageRecognitionForTesseract?(tesseract: G8Tesseract): boolean;
+}
+```
+
+What we want to do is define a class `G8TesseractDelegateImpl` that extends `NSObject` and implements `G8TesseractDelegate` which looks like this:
+```typescript
+class G8TesseractDelegateImpl
+	extends NSObject // native delegates mostly always extend NSObject
+	implements G8TesseractDelegate {
+
+	static ObjCProtocols = [G8TesseractDelegate] // define our native protocalls
+
+	static new(): G8TesseractDelegateImpl {
+		return <G8TesseractDelegateImpl>super.new() // calls new() on the NSObject
+	}
+
+	preprocessedImageForTesseractSourceImage(tesseract: G8Tesseract, sourceImage: UIImage): UIImage {
+		console.info('preprocessedImageForTesseractSourceImage')
+		return sourceImage
+	}
+
+	progressImageRecognitionForTesseract(tesseract: G8Tesseract) {
+		console.info('progressImageRecognitionForTesseract')
+	}
+
+	shouldCancelImageRecognitionForTesseract(tesseract: G8Tesseract): boolean {
+		console.info('shouldCancelImageRecognitionForTesseract')
+		return false
+	}
+
+}
+```
+
+Now that we have our delegate class setup, we can create a new instance of `G8Tesseract` and start using it:
+```typescript
+function image2text(image: UIImage): string {
+	let delegate: G8TesseractDelegateImpl = G8TesseractDelegateImpl.new()
+	let tess: G8Tesseract = G8Tesseract.new()
+	tess.delegate = delegate
+	tess.image = image
+	let results: boolean = tess.recognize()
+	if (results == true) {
+		return tess.recognizedText
+	} else {
+		return 'ERROR'
+	}
+}
+```
+
+
 ## Limitations
 
 * You shouldn't extend an already extended class
 * You can't override static methods or properties
 * You can't expose static methods or properties
+
