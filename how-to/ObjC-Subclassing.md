@@ -99,7 +99,7 @@ var MyAppDelegate = UIResponder.extend({
     // Implement a method from UIApplicationDelegate.
     // We will obtain the method signature from the protocol.
     applicationDidFinishLaunchingWithOptions: function (application, launchOptions) {
-        this._window = new UIWindow(UIScreen.mainScreen().bounds);
+        this._window = new UIWindow(UIScreen.mainScreen.bounds);
         this._window.rootViewController = MyViewController.alloc().init();
         this._window.makeKeyAndVisible();
         return true;
