@@ -184,7 +184,7 @@ There should be no TypeScript constructor, because it will not be executed. Inst
 
 ## TypeScript Delegate Example
 
-When working with native APIs, you'll find yourself having to setup delegates in order to recieve results or callbacks. For this example, we'll setup a delegate for the [Tesseract-OCR-iOS](https://github.com/gali8/Tesseract-OCR-iOS/wiki/Using-Tesseract-OCR-iOS#using-tesseract-object) API. 
+When working with native APIs, you'll find yourself having to setup delegates in order to recieve results or callbacks. For this example, we'll setup a delegate for the [Tesseract-OCR-iOS](https://github.com/gali8/Tesseract-OCR-iOS/wiki/Using-Tesseract-OCR-iOS/6510b29bbf18655f29a26f484b00a24cc66ed88b) API. 
 
 Let's first take a look at what the delegate typescript declarations look like:
 ```typescript
@@ -230,6 +230,11 @@ function image2text(image: UIImage): string {
 	let delegate: G8TesseractDelegateImpl = G8TesseractDelegateImpl.new()
 	let tess: G8Tesseract = G8Tesseract.new()
 	tess.delegate = delegate
+	/*=============================
+	=            NOTES            =
+	=============================*/
+	// The `tess.delegate` property is weak and won't be retained by the Objective-C runtime so you should manually keep the delegate JS object alive as long the tessaract instance is alive
+	/*=====  End of NOTES  ======*/
 	tess.image = image
 	let results: boolean = tess.recognize()
 	if (results == true) {
